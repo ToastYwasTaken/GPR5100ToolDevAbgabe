@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:GPR5100ToolDevAbgabe">
+    <local:CharacterData x:Key="DefaultCharacter">
+        <local:CharacterData.Name>DefaultName</local:CharacterData.Name>
+        <local:CharacterData.Race>DefaultRace</local:CharacterData.Race>
+        <local:CharacterData.Health>100</local:CharacterData.Health>
+        <local:CharacterData.Attack>100</local:CharacterData.Attack>
+        <local:CharacterData.Defense>100</local:CharacterData.Defense>
+        <local:CharacterData.IsMale>True</local:CharacterData.IsMale>
+    </local:CharacterData>
+    <!--Wofür sind die?-->
+    <x:Array x:Key="DefaultCharacters" Type="local:CharacterData">
+        <local:CharacterData Name="El Goblino" Race="Goblin" Health="70" Attack="120" Defense="80" IsMale="True"></local:CharacterData>
+        <local:CharacterData Name="Va' Elhem" Race="Elf" Health="120" Attack="120" Defense="50" IsMale="True"></local:CharacterData>
+    </x:Array>
+</ResourceDictionary>

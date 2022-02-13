@@ -1,0 +1,247 @@
+﻿<Window x:Class="GPR5100ToolDevAbgabe.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GPR5100ToolDevAbgabe"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <!--Commands - Need to bind 2 methods CanExecute() and Execute()-->
+
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:MainWindow.CustomUICommandNewFile}" Executed="OnNewButtonClicked" CanExecute="CanExecuteNewFile"></CommandBinding>
+        <CommandBinding Command="{x:Static local:MainWindow.CustomUICommandOpenFile}" Executed="OnOpenButtonClicked" CanExecute="CanExecuteOpenFile"></CommandBinding>
+        <CommandBinding Command="{x:Static local:MainWindow.CustomUICommandSaveAsFile}" Executed="OnSaveButtonClicked" CanExecute="CanExecuteSaveFile"></CommandBinding>
+        <CommandBinding Command="{x:Static local:MainWindow.CustomUICommandSaveFile}" Executed="OnSaveAsButtonClicked" CanExecute="CanExecuteSaveFileAs"></CommandBinding>
+        <CommandBinding Command="{x:Static local:MainWindow.CustomUICommandCloseWindow}" Executed="OnCloseButtonClicked" CanExecute="CanExecuteCloseWindow"></CommandBinding>
+        <CommandBinding Command="{x:Static local:MainWindow.CustomUICommandHelp}" Executed="OnHelpButtonClicked" CanExecute="CanExecuteHelp"></CommandBinding>
+        <CommandBinding Command="{x:Static local:MainWindow.CustomUICommandRedo}" Executed="OnRedoButtonClicked" CanExecute="CanExecuteRedo"></CommandBinding>
+        <CommandBinding Command="{x:Static local:MainWindow.CustomUICommandRemoveCharacter}" Executed ="OnRemoveButtonClicked" CanExecute="CanExecuteListModifiers"></CommandBinding>
+        <CommandBinding Command="{x:Static local:MainWindow.CustomUICommandChangeCharacter}" Executed ="OnChangeButtonClicked" CanExecute="CanExecuteListModifiers"></CommandBinding>
+        <CommandBinding Command="{x:Static local:MainWindow.CustomUICommandUndo}" Executed="OnUndoButtonClicked" CanExecute="CanExecuteUndo"></CommandBinding>
+        <!--Custom Command: <CommandBinding Command="{x:Static local:MainWindow.CustomUICommandCloseApplication}" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"></CommandBinding> -->
+    </Window.CommandBindings>
+    <Window.Resources>
+        <ResourceDictionary>
+            <local:BooleanToMaleFemaleConverter x:Key="BooleanToMaleFemaleConverter"></local:BooleanToMaleFemaleConverter>
+            <local:SelectedIndexToVisibilityConverter x:Key="SelectedIndexToVisibilityConverter"></local:SelectedIndexToVisibilityConverter>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"></BooleanToVisibilityConverter>
+            <LinearGradientBrush x:Key="LinearGradientBrush" StartPoint="0, 0" EndPoint="0, 1">
+                <GradientStop Color="#FF3D3D3D" Offset="0"/>
+                <GradientStop Color="Gray" Offset="1.5"/>
+                <GradientStop Color="LightGray" Offset="1"/>
+            </LinearGradientBrush>
+            <DataTemplate x:Key="CharacterDataTemplate" DataType="{x:Type local:CharacterData}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding Name}" ></TextBlock>
+                    <TextBlock Text="{Binding Race}"></TextBlock>
+                    <TextBlock Text="{Binding Health}"></TextBlock>
+                    <TextBlock Text="{Binding Attack}"></TextBlock>
+                    <TextBlock Text="{Binding Defense}"></TextBlock>
+                    <TextBlock Text="{Binding IsMale}"></TextBlock>
+                </StackPanel>
+            </DataTemplate>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ResourcesDictionary.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <!--Context menu for entire window, unless defined dif lower-->
+    <Window.ContextMenu>
+        <ContextMenu>
+            <MenuItem>
+
+            </MenuItem>
+        </ContextMenu>
+    </Window.ContextMenu>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" Background="{StaticResource LinearGradientBrush}" VerticalAlignment="Center">
+            <MenuItem>
+                <MenuItem.Icon>
+                    <Image Source="icons/icons8-datei-500.png"></Image>
+                </MenuItem.Icon>
+                <MenuItem.ToolTip>
+                    <TextBlock Text="File"></TextBlock>
+                </MenuItem.ToolTip>
+                <!-- Commands for different actions in the program toolbar -->
+                <MenuItem Header="_New" Command="{x:Static local:MainWindow.CustomUICommandNewFile}">
+                    <MenuItem.Icon>
+                        <Image Source="icons/icons8-dokument-500.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Open" Command="{x:Static local:MainWindow.CustomUICommandOpenFile}">
+                    <MenuItem.Icon>
+                        <Image Source="icons/icons8-ordner-öffnen-500.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Save" Command="{x:Static local:MainWindow.CustomUICommandSaveFile}">
+                    <MenuItem.Icon>
+                        <Image Source="icons/icons8-speichern-64.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Save_as" Command="{x:Static local:MainWindow.CustomUICommandSaveAsFile}">
+                    <MenuItem.Icon>
+                        <Image Source="icons/icons8-speichern-als-30.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Exit" Command="{x:Static local:MainWindow.CustomUICommandCloseWindow}">
+                    <MenuItem.Icon>
+                        <Image Source="icons/icons8-ausgang-50.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <!--Custom Command: <MenuItem Header="ExitCustom" Command="{x:Static local:MainWindow.CustomUICommandCloseApplication}"></MenuItem> -->
+            </MenuItem>
+            <MenuItem>
+                <MenuItem.Icon>
+                    <Image Source="icons/icons8-bearbeiten-500.png"></Image>
+                </MenuItem.Icon>
+                <MenuItem.ToolTip>
+                    <TextBlock Text="Edit"></TextBlock>
+                </MenuItem.ToolTip>
+                <MenuItem Header="_Undo" Command="{x:Static local:MainWindow.CustomUICommandUndo}"></MenuItem>
+                <MenuItem Header="_Redo" Command="{x:Static local:MainWindow.CustomUICommandRedo}"></MenuItem>
+            </MenuItem>
+            <MenuItem>
+                <MenuItem.Icon>
+                    <Image Source="icons/icons8-view-32.png"></Image>
+                </MenuItem.Icon>
+                <MenuItem.ToolTip>
+                    <TextBlock Text="View"></TextBlock>
+                </MenuItem.ToolTip>
+            </MenuItem>
+            <MenuItem>
+                <MenuItem.Icon>
+                    <Image Source="icons/icons8-window-64.png"></Image>
+                </MenuItem.Icon>
+                <MenuItem.ToolTip>
+                    <TextBlock Text="Window"></TextBlock>
+                </MenuItem.ToolTip>
+            </MenuItem>
+            <!--Wie mach ich das sichtbar? // Warum updaten sich die Charaktere nicht? // Warum funktionieren die AppCommands nicht?-->
+            <MenuItem Command="{x:Static local:MainWindow.CustomUICommandHelp}"  >
+                <MenuItem.Icon>
+                    <Image Source="icons/icons8-help-30.png"></Image>
+                </MenuItem.Icon>
+                <MenuItem.ToolTip>
+                    <TextBlock Text="Help"></TextBlock>
+                </MenuItem.ToolTip>
+            </MenuItem>
+        </Menu>
+        <StatusBar DockPanel.Dock="Bottom"></StatusBar>
+        <!--RPG Editor specifics-->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ListBox x:Name="characterListBox" HorizontalContentAlignment="Stretch" Grid.Column="0">
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="{x:Type local:CharacterData}">
+                        <Border x:Name="characterDataBorder" BorderThickness="1" BorderBrush="Black" Padding="5" Margin="1" Background="White">
+                            <Border.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Command="{x:Static local:MainWindow.CustomUICommandRemoveCharacter}">
+                                    </MenuItem>
+                                </ContextMenu>
+                            </Border.ContextMenu>
+                            <Grid HorizontalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Text="{Binding Name}" FontWeight="ExtraBlack"></TextBlock>
+                                <TextBlock Grid.Column="0" Grid.Row="1" Text="{Binding Race}"></TextBlock>
+                                <TextBlock Grid.Column="0" Grid.Row="2" Text="{Binding IsMale, Converter={StaticResource BooleanToMaleFemaleConverter}}"></TextBlock>
+                                <TextBlock Grid.Column="2" Grid.Row="0" Text="{Binding Health, StringFormat=Health: {0:000}}"></TextBlock>
+                                <TextBlock Grid.Column="2" Grid.Row="1" Text="{Binding Attack, StringFormat=Attack: {0:000}}"></TextBlock>
+                                <TextBlock Grid.Column="2" Grid.Row="2" Text="{Binding Defense, StringFormat=Defense: {0:000}}"></TextBlock>
+                            </Grid>
+                        </Border>
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding IsMale}" Value="True">
+                                <Setter TargetName="characterDataBorder" Property="Background" Value="Green"></Setter>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsMale}" Value="False">
+                                <Setter TargetName="characterDataBorder" Property="Background" Value="Red"></Setter>
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemContainerStyle>
+                    <!--Changes colors of highlighted / selected ListBoxItem-->
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="LightYellow"></Setter>
+                            </Trigger>                            
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Foreground" Value="LightGreen"></Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
+            <StackPanel Grid.Column="1">
+                <StackPanel.Resources>
+                    <!--Define style for all buttons in this Stackpanel and children-->
+                    <Style TargetType="Button">
+                        <Setter Property="FontWeight" Value="Bold"></Setter>
+                        <Setter Property="BorderThickness" Value="1.5"></Setter>
+                    </Style>
+                </StackPanel.Resources>
+                <Button Content="Add" Click="OnAddButtonClicked"></Button>
+                <Button Content="Remove" Command="{x:Static local:MainWindow.CustomUICommandRemoveCharacter}"></Button>
+                <Button Content="Change" Command="{x:Static local:MainWindow.CustomUICommandChangeCharacter}"></Button>
+                <!--<CheckBox x:Name="visibleCheckBox" Content="is Visible"></CheckBox>
+                --><!--Converter is set in GroupBox -> Appearance -> Visible -> assign a Converter --><!--
+                <GroupBox Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=visibleCheckBox}">
+                    <StackPanel>
+                        <RadioButton Content="RadioButton 1"></RadioButton>
+                        <RadioButton Content="RadioButton 2"></RadioButton>
+                        <RadioButton Content="RadioButton 3"></RadioButton>
+                        <RadioButton Content="RadioButton 4"></RadioButton>
+                    </StackPanel>
+                </GroupBox>-->
+                <!--Grid displaying the Character stats & making them changable-->
+                <Grid Margin="20" Visibility="{Binding ElementName=characterListBox, Path=SelectedIndex, Converter={StaticResource SelectedIndexToVisibilityConverter}}" 
+                      DataContext="{Binding ElementName=characterListBox, Path=SelectedItem}">
+                    <Grid.Resources>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="FontWeight" Value="Bold"></Setter>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Name: "></TextBlock>
+                    <TextBox x:Name="characterNameTextBox" Grid.Row="0" Grid.Column="1" Text="{Binding Name, UpdateSourceTrigger=Explicit, Mode=OneTime}"></TextBox>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "></TextBlock>
+                    <TextBox x:Name="characterRaceTextBox" Grid.Row="1" Grid.Column="1" Text="{Binding Race, UpdateSourceTrigger=Explicit, Mode=OneTime}"></TextBox>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Health: "></TextBlock>
+                    <TextBox x:Name="characterHealthTextBox" Grid.Row="2" Grid.Column="1" Text="{Binding Health, UpdateSourceTrigger=Explicit, Mode=OneTime}"></TextBox>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Attack: "></TextBlock>
+                    <TextBox x:Name="characterAttackTextBox" Grid.Row="3" Grid.Column="1" Text="{Binding Attack, UpdateSourceTrigger=Explicit, Mode=OneTime}"></TextBox>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Defense: "></TextBlock>
+                    <TextBox x:Name="characterDefenseTextBox" Grid.Row="4" Grid.Column="1" Text="{Binding Defense, UpdateSourceTrigger=Explicit, Mode=OneTime}"></TextBox>
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="is male: "></TextBlock>
+                    <CheckBox x:Name="characterIsMaleTextBox" Grid.Row="5" Grid.Column="1" IsChecked="{Binding IsMale, UpdateSourceTrigger=Explicit, Mode=OneTime}"></CheckBox>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </DockPanel>
+</Window>
