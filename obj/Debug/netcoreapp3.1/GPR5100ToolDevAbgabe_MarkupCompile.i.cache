@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 C:\SAE\Tool Dev\GPR5100ToolDevAbgabe\App.xaml
-2-960243307
+2-283560915
 
-5-1948377994
+8-444556635
 192-1533232326
-MainWindow.xaml;ResourcesDictionary.xaml;
+Themes\Generic.xaml;View\MainWindow.xaml;
 
 True
 

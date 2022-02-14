@@ -1,0 +1,118 @@
+﻿<Window x:Class="GPR5100ToolDevAbgabe.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GPR5100ToolDevAbgabe.View"
+        xmlns:viewmodel="clr-namespace:GPR5100ToolDevAbgabe.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}">
+    <!--Commands - Need to bind 2 methods CanExecute() and Execute()-->
+    <Window.DataContext>
+        <viewmodel:MainViewModel></viewmodel:MainViewModel>
+    </Window.DataContext>
+    <Window.CommandBindings>
+        <CommandBinding Command="{}"></CommandBinding>
+        <CommandBinding Command="{}"></CommandBinding>
+        <CommandBinding Command="{}"></CommandBinding>
+        <CommandBinding Command="{}"></CommandBinding>
+        <CommandBinding Command="{}"></CommandBinding>
+        <CommandBinding Command="{}"></CommandBinding>
+        <CommandBinding Command="{}"></CommandBinding>
+        <CommandBinding Command="{}"></CommandBinding>
+        <CommandBinding Command="{}"></CommandBinding>
+        <CommandBinding Command="{}"></CommandBinding>
+        <!--Custom Command: <CommandBinding Command="{x:Static local:MainWindow.CustomUICommandCloseApplication}" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"></CommandBinding> -->
+    </Window.CommandBindings>
+    <!--Context menu for entire window, unless defined dif lower-->
+    <Window.ContextMenu>
+        <ContextMenu>
+            <MenuItem>
+
+            </MenuItem>
+        </ContextMenu>
+    </Window.ContextMenu>
+    <DockPanel>
+        <DockPanel.Resources>
+            <LinearGradientBrush x:Key="LinearGradientBrush" StartPoint="0, 0" EndPoint="0, 1">
+                <GradientStop Color="#FF3D3D3D" Offset="0"/>
+                <GradientStop Color="Gray" Offset="1.5"/>
+                <GradientStop Color="LightGray" Offset="1"/>
+            </LinearGradientBrush>
+        </DockPanel.Resources>
+        <Menu DockPanel.Dock="Top" Background="{StaticResource LinearGradientBrush}" VerticalAlignment="Center">
+            <MenuItem>
+                <MenuItem.Icon>
+                    <Image Source="icons/icons8-datei-500.png"></Image>
+                </MenuItem.Icon>
+                <MenuItem.ToolTip>
+                    <TextBlock Text="File"></TextBlock>
+                </MenuItem.ToolTip>
+                <!-- Commands for different actions in the program toolbar -->
+                <MenuItem Header="_New" Command="{}">
+                    <MenuItem.Icon>
+                        <Image Source="icons/icons8-dokument-500.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Open" Command="{}">
+                    <MenuItem.Icon>
+                        <Image Source="icons/icons8-ordner-öffnen-500.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Save" Command="{}">
+                    <MenuItem.Icon>
+                        <Image Source="icons/icons8-speichern-64.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Save_as" Command="{}">
+                    <MenuItem.Icon>
+                        <Image Source="icons/icons8-speichern-als-30.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Exit" Command="{}">
+                    <MenuItem.Icon>
+                        <Image Source="icons/icons8-ausgang-50.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <!--Custom Command: <MenuItem Header="ExitCustom" Command="{x:Static local:MainWindow.CustomUICommandCloseApplication}"></MenuItem> -->
+            </MenuItem>
+            <MenuItem>
+                <MenuItem.Icon>
+                    <Image Source="icons/icons8-bearbeiten-500.png"></Image>
+                </MenuItem.Icon>
+                <MenuItem.ToolTip>
+                    <TextBlock Text="Edit"></TextBlock>
+                </MenuItem.ToolTip>
+                <MenuItem Header="_Undo" Command="{}"></MenuItem>
+                <MenuItem Header="_Redo" Command="{}"></MenuItem>
+            </MenuItem>
+            <MenuItem>
+                <MenuItem.Icon>
+                    <Image Source="icons/icons8-view-32.png"></Image>
+                </MenuItem.Icon>
+                <MenuItem.ToolTip>
+                    <TextBlock Text="View"></TextBlock>
+                </MenuItem.ToolTip>
+            </MenuItem>
+            <MenuItem>
+                <MenuItem.Icon>
+                    <Image Source="icons/icons8-window-64.png"></Image>
+                </MenuItem.Icon>
+                <MenuItem.ToolTip>
+                    <TextBlock Text="Window"></TextBlock>
+                </MenuItem.ToolTip>
+            </MenuItem>
+            <!--Wie mach ich das sichtbar? // Warum updaten sich die Charaktere nicht? // Warum funktionieren die AppCommands nicht?-->
+            <MenuItem Command="{}"  >
+                <MenuItem.Icon>
+                    <Image Source="icons/icons8-help-30.png"></Image>
+                </MenuItem.Icon>
+                <MenuItem.ToolTip>
+                    <TextBlock Text="Help"></TextBlock>
+                </MenuItem.ToolTip>
+            </MenuItem>
+        </Menu>
+        <StatusBar DockPanel.Dock="Bottom"></StatusBar>
+    </DockPanel>
+</Window>
