@@ -1,5 +1,5 @@
 ﻿GPR5100ToolDevAbgabe
-1.0.0.0
+
 
 winexe
 C#
@@ -12,7 +12,7 @@ TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 C:\SAE\Tool Dev\GPR5100ToolDevAbgabe\App.xaml
 1-487866684
 
-10-1043213656
+8-328005219
 192-1533232326
 View\MainWindow.xaml;
 

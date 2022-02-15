@@ -5,26 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GPR5100ToolDevAbgabe.View"
         xmlns:viewmodel="clr-namespace:GPR5100ToolDevAbgabe.ViewModel"
+        xmlns:properties="clr-namespace:GPR5100ToolDevAbgabe.Properties"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
-        d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}">
-    <!--Commands - Need to bind 2 methods CanExecute() and Execute()-->
-    <Window.DataContext>
-        <viewmodel:MainViewModel></viewmodel:MainViewModel>
-    </Window.DataContext>
-    <Window.CommandBindings>
-        <CommandBinding Command="{}"></CommandBinding>
-        <CommandBinding Command="{}"></CommandBinding>
-        <CommandBinding Command="{}"></CommandBinding>
-        <CommandBinding Command="{}"></CommandBinding>
-        <CommandBinding Command="{}"></CommandBinding>
-        <CommandBinding Command="{}"></CommandBinding>
-        <CommandBinding Command="{}"></CommandBinding>
-        <CommandBinding Command="{}"></CommandBinding>
-        <CommandBinding Command="{}"></CommandBinding>
-        <CommandBinding Command="{}"></CommandBinding>
-        <!--Custom Command: <CommandBinding Command="{x:Static local:MainWindow.CustomUICommandCloseApplication}" Executed="CommandBinding_Executed" CanExecute="CommandBinding_CanExecute"></CommandBinding> -->
-    </Window.CommandBindings>
+        Title="MainWindow" Height="450" Width="800">
     <!--Context menu for entire window, unless defined dif lower-->
     <Window.ContextMenu>
         <ContextMenu>
@@ -44,52 +27,56 @@
         <Menu DockPanel.Dock="Top" Background="{StaticResource LinearGradientBrush}" VerticalAlignment="Center">
             <MenuItem>
                 <MenuItem.Icon>
-                    <Image Source="icons/icons8-datei-500.png"></Image>
+                    <Image Source="/Resources/icons8-datei-500.png"></Image>
                 </MenuItem.Icon>
                 <MenuItem.ToolTip>
                     <TextBlock Text="File"></TextBlock>
                 </MenuItem.ToolTip>
                 <!-- Commands for different actions in the program toolbar -->
-                <MenuItem Header="_New" Command="{}">
+                <MenuItem Header="New" Command="{Binding RCNewFile}">
                     <MenuItem.Icon>
-                        <Image Source="icons/icons8-dokument-500.png"></Image>
+                        <Image Source="/Resources/icons8-dokument-500.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="_Open" Command="{}">
+                <MenuItem Header="Open" Command="{Binding RCOpenFile}">
                     <MenuItem.Icon>
-                        <Image Source="icons/icons8-ordner-öffnen-500.png"></Image>
+                        <Image Source="/Resources/icons8-ordner-öffnen-500.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="_Save" Command="{}">
+                <MenuItem Header="Save" Command="{Binding RCSaveFile}">
                     <MenuItem.Icon>
-                        <Image Source="icons/icons8-speichern-64.png"></Image>
+                        <Image Source="/Resources/icons8-speichern-64.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Save_as" Command="{}">
+                <MenuItem Header="Save as" Command="{Binding RCSaveFileAs}">
                     <MenuItem.Icon>
-                        <Image Source="icons/icons8-speichern-als-30.png"></Image>
+                        <Image Source="/Resources/icons8-speichern-als-30.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="_Exit" Command="{}">
+                <MenuItem Header="Close Window" Command="{Binding RCCloseWindow}">
                     <MenuItem.Icon>
-                        <Image Source="icons/icons8-ausgang-50.png"></Image>
+                        <Image Source="/Resources/icons8-fenster-schließen-50.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
-                <!--Custom Command: <MenuItem Header="ExitCustom" Command="{x:Static local:MainWindow.CustomUICommandCloseApplication}"></MenuItem> -->
+                <MenuItem Header="Close Application" Command="{Binding RCCloseApplication}">
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/icons8-ausgang-50.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
             <MenuItem>
                 <MenuItem.Icon>
-                    <Image Source="icons/icons8-bearbeiten-500.png"></Image>
+                    <Image Source="/Resources/icons8-bearbeiten-500.png"></Image>
                 </MenuItem.Icon>
                 <MenuItem.ToolTip>
                     <TextBlock Text="Edit"></TextBlock>
                 </MenuItem.ToolTip>
-                <MenuItem Header="_Undo" Command="{}"></MenuItem>
-                <MenuItem Header="_Redo" Command="{}"></MenuItem>
+                <MenuItem Header="Undo" Command="{Binding RCUndo}"></MenuItem>
+                <MenuItem Header="Redo" Command="{Binding RCRedo}"></MenuItem>
             </MenuItem>
             <MenuItem>
                 <MenuItem.Icon>
-                    <Image Source="icons/icons8-view-32.png"></Image>
+                    <Image Source="/Resources/icons8-view-32.png"></Image>
                 </MenuItem.Icon>
                 <MenuItem.ToolTip>
                     <TextBlock Text="View"></TextBlock>
@@ -97,16 +84,16 @@
             </MenuItem>
             <MenuItem>
                 <MenuItem.Icon>
-                    <Image Source="icons/icons8-window-64.png"></Image>
+                    <Image Source="/Resources/icons8-window-64.png"></Image>
                 </MenuItem.Icon>
                 <MenuItem.ToolTip>
                     <TextBlock Text="Window"></TextBlock>
                 </MenuItem.ToolTip>
             </MenuItem>
             <!--Wie mach ich das sichtbar? // Warum updaten sich die Charaktere nicht? // Warum funktionieren die AppCommands nicht?-->
-            <MenuItem Command="{}"  >
+            <MenuItem Command="{Binding RCHelp}"  >
                 <MenuItem.Icon>
-                    <Image Source="icons/icons8-help-30.png"></Image>
+                    <Image Source="/Resources/icons8-help-30.png"></Image>
                 </MenuItem.Icon>
                 <MenuItem.ToolTip>
                     <TextBlock Text="Help"></TextBlock>
@@ -114,5 +101,34 @@
             </MenuItem>
         </Menu>
         <StatusBar DockPanel.Dock="Bottom"></StatusBar>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="5*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="7*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid x:Name="TileSelection" Grid.Column ="0" Grid.Row="0" Grid.RowSpan="3">
+                <ListView x:Name="TileSelectionListView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate DataType="{x:Type viewmodel:Tile}">
+                            <Border BorderThickness="2"></Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>   
+            </Grid>
+            <Grid x:Name="PlaceHolder" Grid.Column ="1" Grid.Row="0"></Grid>
+            <Grid x:Name="MainEditor" Grid.Column="1" Grid.Row="1">
+                <Canvas Margin="5">
+                    
+                </Canvas>
+            </Grid>
+            <Grid x:Name="ErrorShowBox" Grid.Column="1" Grid.Row="3"></Grid>
+            <Grid x:Name="ToolSelection" Grid.Column ="3" Grid.Row="0" Grid.RowSpan="3"></Grid>
+        </Grid>
     </DockPanel>
 </Window>

@@ -24,13 +24,9 @@ C:\SAE\Tool Dev\GPR5100ToolDevAbgabe\bin\Debug\netcoreapp3.1\GPR5100ToolDevAbgab
 C:\SAE\Tool Dev\GPR5100ToolDevAbgabe\bin\Debug\netcoreapp3.1\GPR5100ToolDevAbgabe.runtimeconfig.dev.json
 C:\SAE\Tool Dev\GPR5100ToolDevAbgabe\bin\Debug\netcoreapp3.1\GPR5100ToolDevAbgabe.dll
 C:\SAE\Tool Dev\GPR5100ToolDevAbgabe\bin\Debug\netcoreapp3.1\GPR5100ToolDevAbgabe.pdb
-C:\SAE\Tool Dev\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 C:\SAE\Tool Dev\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\App.g.cs
-C:\SAE\Tool Dev\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
 C:\SAE\Tool Dev\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\GPR5100ToolDevAbgabe_MarkupCompile.cache
 C:\SAE\Tool Dev\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\GPR5100ToolDevAbgabe_MarkupCompile.lref
-C:\SAE\Tool Dev\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\MainWindow.baml
-C:\SAE\Tool Dev\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\ResourcesDictionary.baml
 C:\SAE\Tool Dev\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\GPR5100ToolDevAbgabe.g.resources
 C:\SAE\Tool Dev\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\GPR5100ToolDevAbgabe.AssemblyInfoInputs.cache
 C:\SAE\Tool Dev\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\GPR5100ToolDevAbgabe.AssemblyInfo.cs
@@ -38,6 +34,8 @@ C:\SAE\Tool Dev\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\GPR5100ToolDevAbgab
 C:\SAE\Tool Dev\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\GPR5100ToolDevAbgabe.dll
 C:\SAE\Tool Dev\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\GPR5100ToolDevAbgabe.pdb
 C:\SAE\Tool Dev\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\GPR5100ToolDevAbgabe.genruntimeconfig.cache
-C:\SAE\Tool Dev\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\GPR5100ToolDevAbgabe.csprojAssemblyReference.cache
 C:\SAE\Tool Dev\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\View\MainWindow.g.cs
 C:\SAE\Tool Dev\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\View\MainWindow.baml
+C:\SAE\Tool Dev\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
+C:\SAE\Tool Dev\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\GPR5100ToolDevAbgabe.Properties.Resources.resources
+C:\SAE\Tool Dev\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\GPR5100ToolDevAbgabe.csproj.GenerateResource.cache

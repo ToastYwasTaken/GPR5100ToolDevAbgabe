@@ -25,5 +25,7 @@ namespace GPR5100ToolDevAbgabe.ViewModel
         public RelayCommand RCCloseWindow { get; }
         public RelayCommand RCHelp { get; }
 
+        public RelayCommand RCCloseApplication { get; }
+
     }
 }
