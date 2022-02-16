@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\SAE\\Tool Dev\\GPR5100ToolDevAbgabe\\GPR5100ToolDevAbgabe.csproj": {}
+    "C:\\Users\\x79\\Documents\\GitHub\\GPR5100ToolDevAbgabe\\GPR5100ToolDevAbgabe.csproj": {}
   },
   "projects": {
-    "C:\\SAE\\Tool Dev\\GPR5100ToolDevAbgabe\\GPR5100ToolDevAbgabe.csproj": {
+    "C:\\Users\\x79\\Documents\\GitHub\\GPR5100ToolDevAbgabe\\GPR5100ToolDevAbgabe.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\SAE\\Tool Dev\\GPR5100ToolDevAbgabe\\GPR5100ToolDevAbgabe.csproj",
+        "projectUniqueName": "C:\\Users\\x79\\Documents\\GitHub\\GPR5100ToolDevAbgabe\\GPR5100ToolDevAbgabe.csproj",
         "projectName": "GPR5100ToolDevAbgabe",
-        "projectPath": "C:\\SAE\\Tool Dev\\GPR5100ToolDevAbgabe\\GPR5100ToolDevAbgabe.csproj",
-        "packagesPath": "C:\\Users\\surfa\\.nuget\\packages\\",
-        "outputPath": "C:\\SAE\\Tool Dev\\GPR5100ToolDevAbgabe\\obj\\",
+        "projectPath": "C:\\Users\\x79\\Documents\\GitHub\\GPR5100ToolDevAbgabe\\GPR5100ToolDevAbgabe.csproj",
+        "packagesPath": "C:\\Users\\x79\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\x79\\Documents\\GitHub\\GPR5100ToolDevAbgabe\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\surfa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\x79\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -61,7 +61,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
         }
       }
     }

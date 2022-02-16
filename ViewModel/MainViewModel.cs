@@ -10,22 +10,59 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GPR5100ToolDevAbgabe.View;
+using System.Collections.ObjectModel;
+/*****************************************************************************
+* Project: GPR5100ToolDevAbgabe
+* File   : MainViewModel.cs
+* Date   : 16.02.2022
+* Author : Franz Mörike (FM)
+*
+* These coded instructions, statements, and computer programs contain
+* proprietary information of the author and are protected by Federal
+* copyright law. They may not be disclosed to third parties or copied
+* or duplicated in any form, in whole or in part, without the prior
+* written consent of the author.
+* 
+* Disclaimer: The code bases on lectures from GPR5100ToolDevelopement. 
+* Unless claimed the rights for the code base go to the lecturer.
+*
+* ChangeLog
+* ----------------------------
+*	16.02.2022  created
+******************************************************************************/
 
 namespace GPR5100ToolDevAbgabe.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
-        public RelayCommand RCNewFile { get; }
-        public RelayCommand RCOpenFile { get; }
-        public RelayCommand RCSaveFile { get; }
-        public RelayCommand RCSaveFileAs { get; }
+        // File specific commands:
+        public RelayCommand FileCommand_NewFile { get; }
+        public RelayCommand FileCommand_OpenFile { get; }
+        public RelayCommand FileCommand_SaveFile { get; }
+        public RelayCommand FileCommand_SaveFileAs { get; }
+        public RelayCommand EditCommand_Undo { get; }
+        public RelayCommand EditCommand_Redo { get; }
+        //public RelayCommand RCCloseWindow { get; }
+        //Program specific commands:
+        public RelayCommand ProgramCommand_Help { get; }
+        public RelayCommand ProgramCommand_CloseApplication { get; }
+        public RelayCommand ProgramCommand_OpenSettingsWindow { get; }
+        //Editor specific commands
+        private TileSelectionElement selectedElement;
+        public TileSelectionElement SelectedElement 
+        {
+            get => selectedElement;
+            set => RaisePropertyIfChanged(ref selectedElement, value);
+        }
 
-        public RelayCommand RCUndo { get; }
-        public RelayCommand RCRedo { get; }
-        public RelayCommand RCCloseWindow { get; }
-        public RelayCommand RCHelp { get; }
 
-        public RelayCommand RCCloseApplication { get; }
+        public ObservableCollection<TileSelectionElement> TileSelectionElements = new ObservableCollection<TileSelectionElement>();
+        public MainViewModel()
+        {
+            ProgramCommand_CloseApplication = new RelayCommand(() => Application.Current.Shutdown());
+            ProgramCommand_OpenSettingsWindow = new RelayCommand(() => new SettingsWindow().ShowDialog());
+        }
 
     }
 }
