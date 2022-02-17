@@ -23,6 +23,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:RPGEditor"
              xmlns:viewmodel="clr-namespace:GPR5100ToolDevAbgabe.ViewModel"
+             xmlns:model ="clr-namespace:GPR5100ToolDevAbgabe.Model"
              StartupUri="View/MainWindow.xaml">
     <Application.Resources>
         <viewmodel:ViewModelLocator x:Key="VMLocator"></viewmodel:ViewModelLocator>

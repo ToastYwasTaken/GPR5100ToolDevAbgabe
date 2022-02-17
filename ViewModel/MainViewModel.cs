@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GPR5100ToolDevAbgabe.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -43,26 +44,30 @@ namespace GPR5100ToolDevAbgabe.ViewModel
         public RelayCommand FileCommand_SaveFileAs { get; }
         public RelayCommand EditCommand_Undo { get; }
         public RelayCommand EditCommand_Redo { get; }
-        //public RelayCommand RCCloseWindow { get; }
         //Program specific commands:
         public RelayCommand ProgramCommand_Help { get; }
         public RelayCommand ProgramCommand_CloseApplication { get; }
         public RelayCommand ProgramCommand_OpenSettingsWindow { get; }
         //Editor specific commands
-        private TileSelectionElement selectedElement;
-        public TileSelectionElement SelectedElement 
+        private int selectedElementIndex;
+        public int SelectedElementIndex 
         {
-            get => selectedElement;
-            set => RaisePropertyIfChanged(ref selectedElement, value);
+            get => selectedElementIndex;
+            set => RaisePropertyIfChanged(ref selectedElementIndex, value);
+        }
+        private int tileSelectionWidth = 200;
+
+        public int TileSelectionWidth
+        {
+            get => tileSelectionWidth;
+            set => RaisePropertyIfChanged(ref tileSelectionWidth, value);
         }
 
-
-        public ObservableCollection<TileSelectionElement> TileSelectionElements = new ObservableCollection<TileSelectionElement>();
         public MainViewModel()
         {
             ProgramCommand_CloseApplication = new RelayCommand(() => Application.Current.Shutdown());
             ProgramCommand_OpenSettingsWindow = new RelayCommand(() => new SettingsWindow().ShowDialog());
         }
-
+        
     }
 }

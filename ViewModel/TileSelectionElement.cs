@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Media.Imaging;
+using System.Collections.ObjectModel;
 
 namespace GPR5100ToolDevAbgabe.ViewModel
 {
+
     public class TileSelectionElement
     {
-        public string Title { get; }
-
-        public TileSelectionElement(string _title)
+        public BitmapImage Tile { get; set; }
+        public Uri uri { get; set; }
+        public TileSelectionElement(string _path)
         {
-            Title = _title;
+            uri = new Uri(_path, UriKind.Absolute);
+            Tile = new BitmapImage(uri);
         }
     }
 }

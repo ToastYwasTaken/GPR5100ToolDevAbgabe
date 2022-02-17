@@ -61,7 +61,7 @@ C:\Users\x79\Documents\GitHub\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\GPR51
 C:\Users\x79\Documents\GitHub\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\GPR5100ToolDevAbgabe.pdb
 C:\Users\x79\Documents\GitHub\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\GPR5100ToolDevAbgabe.genruntimeconfig.cache
 C:\Users\x79\Documents\GitHub\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\App.baml
-C:\Users\x79\Documents\GitHub\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\GPR5100ToolDevAbgabe.csproj.AssemblyReference.cache
 C:\Users\x79\Documents\GitHub\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\View\SettingsWindow.g.cs
 C:\Users\x79\Documents\GitHub\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\View\SettingsWindow.baml
 C:\Users\x79\Documents\GitHub\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\GPR5100ToolDevAbgabe.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\x79\Documents\GitHub\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\GPR5100ToolDevAbgabe.csproj.AssemblyReference.cache
