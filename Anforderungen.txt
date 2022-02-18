@@ -1,0 +1,26 @@
+Anforderungen:
+-Erstellen eines Anwendungsfensters mit einem Menü und einem graphischen Bereich, in dem das Level angezeigt wird.
+-Eine Level-Datei kann ausgewählt und geladen werden.
+-Eine Level-Datei kann gespeichert werden ("Speichern"). Der Name und der Speicherort können frei gewählt werden (vgl. „Speichern als…“).
+-Der Inhalt der Level-Datei wird korrekt dargestellt.
+-Die Level Datei muss binär (nicht Text) sein.
+-Der Editor selbst lädt Position und Größe seiner Oberfläche aus einer Konfigurationsdatei im Textformat.
+-Es muss möglich sein, die Level-Daten im graphischen Bereich, mit entsprechenden Methoden (z.B. Maus/Game Controller) zu editieren.
+-Ein Eigenschaften-Fenster stellt die Eigenschaften eines entsprechenden Level-Elements dar.
+-Der Level Editor speichert die Level Daten in internen Strukturen, die zum Laden/Speichern verwendet werden können.
+-Das User Interface ist benutzerfreundlich
+	-Anzeige von Tooltips
+	-Feedback bei (falscher) Interaktion
+	-Einhaltung Betriebssystem-konformer Richtlinien (z.B. Kontextmenüs, Verhalten der Steuerelemente)
+	-ggf. Anzeige von Informationen/Zuständen möglicher weiterer Anwendungen die vom Leveleditor betroffen sind (z.B. Game Engine)
+	-Verwaltung und Anzeige einer Liste der zuletzt geöffneten Dateien (MRU)
+	-Alle wichtigen Interaktionen müssen über Tastatur-Shortcuts verfügen
+	-Es gibt ein "Optionen"-Fenster dessen Informationen in der Konfigurationsdatei gespeichert werden sollen. (Es gibt also zwei Arten von Dateien: die Level Daten in einer binären, nicht-Text-Datei und die Konfigurationsdatei der Anwendung im Text Format)
+-Analyse und Anwendung von Befehlszeilenparametern die die Informationen der Konfigurationsdatei ggf.  überschreiben/ignorieren.
+-Es muss eine Hilfe-Funktion (on- oder offline) vorhanden sein.
+
+TODO:
+	- Umbauen der ApplicationCommands auf eigene Commands
+		- grundsätzliche Funktionalität
+		- komplette Funktionalität
+	

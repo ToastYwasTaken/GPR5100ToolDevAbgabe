@@ -1,0 +1,31 @@
+﻿<!--/*****************************************************************************
+* Project: GPR5100ToolDevAbgabe
+* File   : App.xaml
+* Date   : 16.02.2022
+* Author : Franz Mörike (FM)
+*
+* These coded instructions, statements, and computer programs contain
+* proprietary information of the author and are protected by Federal
+* copyright law. They may not be disclosed to third parties or copied
+* or duplicated in any form, in whole or in part, without the prior
+* written consent of the author.
+* 
+* Disclaimer: The code bases on lectures from GPR5100ToolDevelopement. 
+* Unless claimed the rights for the code base go to the lecturer.
+*
+* ChangeLog
+* _____________________
+*	16.02.2022  created
+******************************************************************************/
+-->
+    <Application x:Class="RPGEditor.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:RPGEditor"
+             xmlns:viewmodel="clr-namespace:GPR5100ToolDevAbgabe.ViewModel"
+             xmlns:model ="clr-namespace:GPR5100ToolDevAbgabe.Model"
+             StartupUri="View/MainWindow.xaml">
+    <Application.Resources>
+        <viewmodel:ViewModelLocator x:Key="VMLocator"></viewmodel:ViewModelLocator>
+    </Application.Resources>
+</Application>
