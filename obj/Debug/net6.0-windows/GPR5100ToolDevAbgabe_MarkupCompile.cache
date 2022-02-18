@@ -1,19 +1,19 @@
 ﻿GPR5100ToolDevAbgabe
-1.0.0.0
+
 
 winexe
 C#
 .cs
-C:\Users\x79\Documents\GitHub\GPR5100ToolDevAbgabe\obj\Debug\netcoreapp3.1\
+C:\Users\x79\Documents\GitHub\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\
 GPR5100ToolDevAbgabe
 none
 false
-TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
+TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\x79\Documents\GitHub\GPR5100ToolDevAbgabe\App.xaml
 2-1492275686
 
-161797692878
-192-1533232326
+13613782347
+1941905061893
 View\MainWindow.xaml;View\SettingsWindow.xaml;
 
 False

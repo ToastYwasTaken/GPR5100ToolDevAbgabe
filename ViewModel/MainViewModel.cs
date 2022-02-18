@@ -55,18 +55,22 @@ namespace GPR5100ToolDevAbgabe.ViewModel
             get => selectedElementIndex;
             set => RaisePropertyIfChanged(ref selectedElementIndex, value);
         }
-        private int tileSelectionWidth = 200;
-
-        public int TileSelectionWidth
-        {
-            get => tileSelectionWidth;
-            set => RaisePropertyIfChanged(ref tileSelectionWidth, value);
-        }
 
         public MainViewModel()
         {
+            FileCommand_NewFile = new RelayCommand(() => throw new NotImplementedException());
+            FileCommand_OpenFile = new RelayCommand(() => throw new NotImplementedException());
+            FileCommand_SaveFile = new RelayCommand(() => throw new NotImplementedException());
+            FileCommand_SaveFileAs = new RelayCommand(() => throw new NotImplementedException());
+
+            EditCommand_Undo = new RelayCommand(() => throw new NotImplementedException());
+            EditCommand_Redo = new RelayCommand(() => throw new NotImplementedException());
+
+            ProgramCommand_Help = new RelayCommand(() => throw new NotImplementedException());
             ProgramCommand_CloseApplication = new RelayCommand(() => Application.Current.Shutdown());
             ProgramCommand_OpenSettingsWindow = new RelayCommand(() => new SettingsWindow().ShowDialog());
+
+
         }
         
     }
