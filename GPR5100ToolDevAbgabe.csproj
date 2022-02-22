@@ -47,6 +47,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <COMReference Include="{215d64d2-031c-33c7-96e3-61794cd1ee61}">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>4</VersionMinor>
+      <VersionMajor>2</VersionMajor>
+      <Guid>215d64d2-031c-33c7-96e3-61794cd1ee61</Guid>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Resources\icons8-aktualisieren-500.png" />
     <Resource Include="Resources\icons8-aus-der-cloud-laden-500.png" />
     <Resource Include="Resources\icons8-ausgang-50.png" />

@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GPR5100ToolDevAbgabe.View;
 using System.Collections.ObjectModel;
+using GPR5100ToolDevAbgabe.Model;
 /*****************************************************************************
 * Project: GPR5100ToolDevAbgabe
 * File   : MainViewModel.cs
@@ -55,13 +56,22 @@ namespace GPR5100ToolDevAbgabe.ViewModel
             get => selectedElementIndex;
             set => RaisePropertyIfChanged(ref selectedElementIndex, value);
         }
+        private Project loadedProject;
+
+        public Project LoadedProject
+        {
+            get => loadedProject;
+            set => RaisePropertyIfChanged(ref loadedProject, value);
+        }
+
 
         public MainViewModel()
         {
-            FileCommand_NewFile = new RelayCommand(() => throw new NotImplementedException());
-            FileCommand_OpenFile = new RelayCommand(() => throw new NotImplementedException());
-            FileCommand_SaveFile = new RelayCommand(() => throw new NotImplementedException());
-            FileCommand_SaveFileAs = new RelayCommand(() => throw new NotImplementedException());
+            ServicesLocator servicesLocator = new ServicesLocator();
+            FileCommand_NewFile = new RelayCommand(() => servicesLocator.GetService<FileIOService>().NewFile());
+            FileCommand_OpenFile = new RelayCommand(() => servicesLocator.GetService<FileIOService>().OpenFile());
+            FileCommand_SaveFile = new RelayCommand(() => servicesLocator.GetService<FileIOService>().SaveFile());
+            FileCommand_SaveFileAs = new RelayCommand(() => servicesLocator.GetService<FileIOService>().SaveFileAs());
 
             EditCommand_Undo = new RelayCommand(() => throw new NotImplementedException());
             EditCommand_Redo = new RelayCommand(() => throw new NotImplementedException());
