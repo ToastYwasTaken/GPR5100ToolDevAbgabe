@@ -10,9 +10,10 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace GPR5100ToolDevAbgabe.Model
 {
-    public class FileIOService : IFileIOService
+    public class FileIOService
     {
         private static readonly  string outputPath = System.IO.Path.Combine(Environment.CurrentDirectory, "SaveFiles");
+        private Project project;
         public void OpenFileDialog()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -31,19 +32,12 @@ namespace GPR5100ToolDevAbgabe.Model
             {
                 Directory.CreateDirectory(outputPath);
             }
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            if(saveFileDialog.ShowDialog() ?? false)
-            {
-                string fileName = saveFileDialog.FileName;
+                string fileName = project.ProjectName;
                 BinaryFormatter binaryFormatter = new BinaryFormatter();
                 FileStream fileStream = File.Create(fileName);
-                binaryFormatter.Serialize(fileStream, levelEditorData);
+                binaryFormatter.Serialize(fileStream, project);
                 fileStream.Close();
                 fileStream.Dispose();
-
-            }
-
-            throw new NotImplementedException();
         }
         public void SaveFileAs()
         {
@@ -54,13 +48,5 @@ namespace GPR5100ToolDevAbgabe.Model
             throw new NotImplementedException();
         }
 
-    }
-    public interface IFileIOService
-    {
-        void OpenFile();
-        void NewFile();
-        void SaveFile();
-        void SaveFileAs();
-        void CloseFile();
     }
 }

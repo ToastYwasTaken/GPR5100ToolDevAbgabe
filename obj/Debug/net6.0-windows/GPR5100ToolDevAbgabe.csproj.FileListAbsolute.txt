@@ -25,3 +25,31 @@ C:\Users\x79\Documents\GitHub\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\refi
 C:\Users\x79\Documents\GitHub\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\GPR5100ToolDevAbgabe.pdb
 C:\Users\x79\Documents\GitHub\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\GPR5100ToolDevAbgabe.genruntimeconfig.cache
 C:\Users\x79\Documents\GitHub\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\ref\GPR5100ToolDevAbgabe.dll
+C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\bin\Debug\net6.0-windows\GPR5100ToolDevAbgabe.exe
+C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\bin\Debug\net6.0-windows\GPR5100ToolDevAbgabe.deps.json
+C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\bin\Debug\net6.0-windows\GPR5100ToolDevAbgabe.runtimeconfig.json
+C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\bin\Debug\net6.0-windows\GPR5100ToolDevAbgabe.dll
+C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\bin\Debug\net6.0-windows\GPR5100ToolDevAbgabe.pdb
+C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\GPR5100ToolDevAbgabe.csproj.AssemblyReference.cache
+C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\GPR5100ToolDevAbgabe.csproj.ResolveComReference.cache
+C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\View\MainWindow.g.cs
+C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\View\SettingsWindow.g.cs
+C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\App.g.cs
+C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\GPR5100ToolDevAbgabe_MarkupCompile.cache
+C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\GPR5100ToolDevAbgabe_MarkupCompile.lref
+C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\App.baml
+C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\View\MainWindow.baml
+C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\View\SettingsWindow.baml
+C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\GPR5100ToolDevAbgabe.g.resources
+C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\GPR5100ToolDevAbgabe.Properties.Resources.resources
+C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\GPR5100ToolDevAbgabe.csproj.GenerateResource.cache
+C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\GPR5100ToolDevAbgabe.GeneratedMSBuildEditorConfig.editorconfig
+C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\GPR5100ToolDevAbgabe.AssemblyInfoInputs.cache
+C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\GPR5100ToolDevAbgabe.AssemblyInfo.cs
+C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\GPR5100ToolDevAbgabe.csproj.CoreCompileInputs.cache
+C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\GPR5100ToolDevAbgabe.dll
+C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\refint\GPR5100ToolDevAbgabe.dll
+C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\GPR5100ToolDevAbgabe.pdb
+C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\GPR5100ToolDevAbgabe.genruntimeconfig.cache
+C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\ref\GPR5100ToolDevAbgabe.dll

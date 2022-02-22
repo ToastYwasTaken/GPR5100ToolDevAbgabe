@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\x79\\Documents\\GitHub\\GPR5100ToolDevAbgabe\\GPR5100ToolDevAbgabe.csproj": {}
+    "C:\\SAE\\Tool Dev\\GPR5100ToolDevAbgabe\\GPR5100ToolDevAbgabe.csproj": {}
   },
   "projects": {
-    "C:\\Users\\x79\\Documents\\GitHub\\GPR5100ToolDevAbgabe\\GPR5100ToolDevAbgabe.csproj": {
+    "C:\\SAE\\Tool Dev\\GPR5100ToolDevAbgabe\\GPR5100ToolDevAbgabe.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\x79\\Documents\\GitHub\\GPR5100ToolDevAbgabe\\GPR5100ToolDevAbgabe.csproj",
+        "projectUniqueName": "C:\\SAE\\Tool Dev\\GPR5100ToolDevAbgabe\\GPR5100ToolDevAbgabe.csproj",
         "projectName": "GPR5100ToolDevAbgabe",
-        "projectPath": "C:\\Users\\x79\\Documents\\GitHub\\GPR5100ToolDevAbgabe\\GPR5100ToolDevAbgabe.csproj",
-        "packagesPath": "C:\\Users\\x79\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\x79\\Documents\\GitHub\\GPR5100ToolDevAbgabe\\obj\\",
+        "projectPath": "C:\\SAE\\Tool Dev\\GPR5100ToolDevAbgabe\\GPR5100ToolDevAbgabe.csproj",
+        "packagesPath": "C:\\Users\\surfa\\.nuget\\packages\\",
+        "outputPath": "C:\\SAE\\Tool Dev\\GPR5100ToolDevAbgabe\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\x79\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\surfa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

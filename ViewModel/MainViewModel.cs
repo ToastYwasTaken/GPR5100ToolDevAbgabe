@@ -67,11 +67,11 @@ namespace GPR5100ToolDevAbgabe.ViewModel
 
         public MainViewModel()
         {
-            ServicesLocator servicesLocator = new ServicesLocator();
-            FileCommand_NewFile = new RelayCommand(() => servicesLocator.GetService<FileIOService>().NewFile());
-            FileCommand_OpenFile = new RelayCommand(() => servicesLocator.GetService<FileIOService>().OpenFile());
-            FileCommand_SaveFile = new RelayCommand(() => servicesLocator.GetService<FileIOService>().SaveFile());
-            FileCommand_SaveFileAs = new RelayCommand(() => servicesLocator.GetService<FileIOService>().SaveFileAs());
+            FileIOService fileIOService = new FileIOService();
+            FileCommand_NewFile = new RelayCommand(() => fileIOService.NewFile());
+            FileCommand_OpenFile = new RelayCommand(() => fileIOService.OpenFile());
+            FileCommand_SaveFile = new RelayCommand(() => fileIOService.SaveFile());
+            FileCommand_SaveFileAs = new RelayCommand(() => fileIOService.SaveFileAs());
 
             EditCommand_Undo = new RelayCommand(() => throw new NotImplementedException());
             EditCommand_Redo = new RelayCommand(() => throw new NotImplementedException());
