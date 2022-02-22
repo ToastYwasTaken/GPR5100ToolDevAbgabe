@@ -53,3 +53,4 @@ C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\obj\Deb
 C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\GPR5100ToolDevAbgabe.pdb
 C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\GPR5100ToolDevAbgabe.genruntimeconfig.cache
 C:\SAE\Tool Dev\ToolDev-VL-WPF\GPR5100ToolDevAbgabe\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\ref\GPR5100ToolDevAbgabe.dll
+C:\Users\x79\Documents\GitHub\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\GPR5100ToolDevAbgabe.csproj.ResolveComReference.cache

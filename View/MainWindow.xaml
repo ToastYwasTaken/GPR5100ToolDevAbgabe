@@ -76,6 +76,11 @@
                         <Image Source="/Resources/icons8-speichern-als-30.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
+                <MenuItem Header="Close" Command="{Binding FileCommand_CloseFile}">
+                    <MenuItem.Icon>
+                        <Image Source="/Resources/icons8-speichern-als-30.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
                 <Separator></Separator>
                 <MenuItem Header="Settings" Command="{Binding ProgramCommand_OpenSettingsWindow}">
                     <MenuItem.Icon>

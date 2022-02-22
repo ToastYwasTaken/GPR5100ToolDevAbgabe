@@ -43,6 +43,7 @@ namespace GPR5100ToolDevAbgabe.ViewModel
         public RelayCommand FileCommand_OpenFile { get; }
         public RelayCommand FileCommand_SaveFile { get; }
         public RelayCommand FileCommand_SaveFileAs { get; }
+        public RelayCommand FileCommand_CloseFile {get;}
         public RelayCommand EditCommand_Undo { get; }
         public RelayCommand EditCommand_Redo { get; }
         //Program specific commands:
@@ -56,9 +57,9 @@ namespace GPR5100ToolDevAbgabe.ViewModel
             get => selectedElementIndex;
             set => RaisePropertyIfChanged(ref selectedElementIndex, value);
         }
-        private Project loadedProject;
+        private Level loadedProject;
 
-        public Project LoadedProject
+        public Level LoadedProject
         {
             get => loadedProject;
             set => RaisePropertyIfChanged(ref loadedProject, value);
@@ -67,11 +68,12 @@ namespace GPR5100ToolDevAbgabe.ViewModel
 
         public MainViewModel()
         {
-            FileIOService fileIOService = new FileIOService();
-            FileCommand_NewFile = new RelayCommand(() => fileIOService.NewFile());
-            FileCommand_OpenFile = new RelayCommand(() => fileIOService.OpenFile());
-            FileCommand_SaveFile = new RelayCommand(() => fileIOService.SaveFile());
-            FileCommand_SaveFileAs = new RelayCommand(() => fileIOService.SaveFileAs());
+            LevelViewModel levelViewModel = new LevelViewModel();
+            FileCommand_NewFile = new RelayCommand(() => levelViewModel.NewFile());
+            FileCommand_OpenFile = new RelayCommand(() => levelViewModel.OpenFile());
+            FileCommand_SaveFile = new RelayCommand(() => levelViewModel.SaveFile());
+            FileCommand_SaveFileAs = new RelayCommand(() => levelViewModel.SaveFileAs());
+            FileCommand_CloseFile = new RelayCommand(() => levelViewModel.CloseFile());
 
             EditCommand_Undo = new RelayCommand(() => throw new NotImplementedException());
             EditCommand_Redo = new RelayCommand(() => throw new NotImplementedException());
