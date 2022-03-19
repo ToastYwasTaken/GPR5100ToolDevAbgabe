@@ -51,6 +51,8 @@ namespace GPR5100ToolDevAbgabe.ViewModel
         public RelayCommand ProgramCommand_CloseApplication { get; }
         public RelayCommand ProgramCommand_OpenSettingsWindow { get; }
         //Editor specific commands
+        public RelayCommand CreateGrid { get; }
+
         private int selectedElementIndex;
         public int SelectedElementIndex 
         {
@@ -58,11 +60,22 @@ namespace GPR5100ToolDevAbgabe.ViewModel
             set => RaisePropertyIfChanged(ref selectedElementIndex, value);
         }
         private Level loadedProject;
-
         public Level LoadedProject
         {
             get => loadedProject;
             set => RaisePropertyIfChanged(ref loadedProject, value);
+        }
+        private int inputHeight;
+        public int InputHeight
+        {
+            get => inputHeight;
+            set => RaisePropertyIfChanged(ref inputHeight, value);
+        }
+        private int inputWidth;
+        public int InputWidth
+        {
+            get => inputWidth;
+            set => RaisePropertyIfChanged(ref inputWidth, value);
         }
 
 
@@ -82,7 +95,7 @@ namespace GPR5100ToolDevAbgabe.ViewModel
             ProgramCommand_CloseApplication = new RelayCommand(() => Application.Current.Shutdown());
             ProgramCommand_OpenSettingsWindow = new RelayCommand(() => new SettingsWindow().ShowDialog());
 
-
+            CreateGrid = new RelayCommand(() => new Level(inputWidth, inputHeight));
         }
         
     }
