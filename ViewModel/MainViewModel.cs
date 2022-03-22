@@ -77,7 +77,12 @@ namespace GPR5100ToolDevAbgabe.ViewModel
             get => inputWidth;
             set => RaisePropertyIfChanged(ref inputWidth, value);
         }
-
+        private string levelName;
+        public string LevelName
+        {
+            get => levelName;
+            set => RaisePropertyIfChanged(ref levelName, value);
+        }
 
         public MainViewModel()
         {
@@ -95,7 +100,7 @@ namespace GPR5100ToolDevAbgabe.ViewModel
             ProgramCommand_CloseApplication = new RelayCommand(() => Application.Current.Shutdown());
             ProgramCommand_OpenSettingsWindow = new RelayCommand(() => new SettingsWindow().ShowDialog());
 
-            CreateGrid = new RelayCommand(() => new Level(inputWidth, inputHeight));
+            CreateGrid = new RelayCommand(() => new Level(levelName, inputWidth, inputHeight));
         }
         
     }

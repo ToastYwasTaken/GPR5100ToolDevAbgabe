@@ -19,25 +19,7 @@ namespace GPR5100ToolDevAbgabe.ViewModel
         {
             level = new Level();
         }
-        private string name;
-        public string Name
-        {
-            get => level.Name;
-            set { level.Name = value; PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(Name))); }
-        }
-        private int width;
-        public int Width
-        {
-            get => level.Width;
-            set { level.Width = value; PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(Width))); }
-        }
-        private int height;
-        public int Height
-        {
-            get => level.Height;
-            set { level.Height = value; PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(Height))); }
 
-        }
         public void OpenFile()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -60,6 +42,7 @@ namespace GPR5100ToolDevAbgabe.ViewModel
                 }
             }
         }
+        //TODO
         public void NewFile()
         {
             throw new NotImplementedException();

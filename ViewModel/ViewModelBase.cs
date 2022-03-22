@@ -31,7 +31,7 @@ using System.Windows.Shapes;
 * ----------------------------
 *	16.02.2022  created
 * Note:
-* I don't know what a genocide of code the noon-lecturer came up with, but it looks awfuly overcomplicated
+* This entire class is (almost entirely) copied from evening lecture
 ******************************************************************************/
 
 namespace GPR5100ToolDevAbgabe.ViewModel

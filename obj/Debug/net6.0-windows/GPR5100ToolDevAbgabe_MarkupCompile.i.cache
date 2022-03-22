@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\x79\Documents\GitHub\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\
+C:\SAE\Tool Dev\GPR5100ToolDevAbgabe\obj\Debug\net6.0-windows\
 GPR5100ToolDevAbgabe
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\x79\Documents\GitHub\GPR5100ToolDevAbgabe\App.xaml
+C:\SAE\Tool Dev\GPR5100ToolDevAbgabe\App.xaml
 2-1492275686
 
 172092696665
 1941905061893
 View\MainWindow.xaml;View\SettingsWindow.xaml;
 
-True
+False
 

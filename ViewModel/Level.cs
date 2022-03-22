@@ -19,8 +19,9 @@ namespace GPR5100ToolDevAbgabe.ViewModel
         {
             
         }
-        public Level(int _width, int _height)
+        public Level(string _name, int _width, int _height)
         {
+            name = _name;
             width = _width;
             height = _height;
         }
