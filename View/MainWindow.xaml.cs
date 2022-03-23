@@ -44,19 +44,34 @@ namespace GPR5100ToolDevAbgabe.View
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainViewModel mvm = null;
+        Level level = null;
+        ObservableCollection<TileSelectionElement> tileSelectionElements = null;
         public MainWindow()
         {
             InitializeComponent();
-
+            mvm = new MainViewModel();
+            DataContext = mvm;
+            mvm.SelectedElementChanged += OnIndexChanged;
             //Adding Tiles from current directory into the application
             string[] files = Directory.GetFiles(System.IO.Path.Combine(Environment.CurrentDirectory, "Tiles"), "*.png", SearchOption.TopDirectoryOnly);
             int tileAmount = files.Length;
-            ObservableCollection<TileSelectionElement> tileSelectionElements = new();
+            tileSelectionElements = new();
             for (int i = 0; i < tileAmount; i++)
             {
                 tileSelectionElements.Add(new TileSelectionElement(files[i]));
             }
             TileSelectionListView.ItemsSource = tileSelectionElements;
+            level = new(MainEditorUniformGrid);
+            
+        }
+
+        public void OnIndexChanged(int _index)
+        {
+            if(level != null && tileSelectionElements != null)
+            {
+                level.SelectedTileImage = tileSelectionElements[_index].BImage;
+            }
         }
 
     }

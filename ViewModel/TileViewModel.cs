@@ -42,15 +42,5 @@ namespace GPR5100ToolDevAbgabe.ViewModel
 
     }
 
-    public class InteractableTile
-    {
-        public int tileHeight, tileWidth;
-
-        public InteractableTile(int _tileHeight, int _tileWidth)
-        {
-            tileHeight = _tileHeight;
-            tileWidth = _tileWidth;
-        }
-    }
 
 }

@@ -154,7 +154,7 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                                    <Image Source="{Binding Tile}" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
+                                    <Image Source="{Binding BImage}" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
                                 </StackPanel>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -193,7 +193,7 @@
                     </Grid>
                 </Grid>
                 <Grid x:Name="MainEditor" Grid.Column="2" Grid.Row="1">
-                    <UniformGrid Columns="{Binding LoadedProject.Height}" Rows="{Binding LoadedProject.Width}">
+                    <UniformGrid x:Name="MainEditorUniformGrid" Columns="{Binding LoadedProject.Height}" Rows="{Binding LoadedProject.Width}">
 
                     </UniformGrid>
                 </Grid>

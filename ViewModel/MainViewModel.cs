@@ -53,11 +53,15 @@ namespace GPR5100ToolDevAbgabe.ViewModel
         //Editor specific commands
         public RelayCommand CreateGrid { get; }
 
+        private event Action<int> selectedElementChanged;
+
+        public event Action<int> SelectedElementChanged { add => selectedElementChanged += value;  remove => selectedElementChanged -= value;  }
+
         private int selectedElementIndex;
         public int SelectedElementIndex 
         {
             get => selectedElementIndex;
-            set => RaisePropertyIfChanged(ref selectedElementIndex, value);
+            set {  RaisePropertyIfChanged(ref selectedElementIndex, value); selectedElementChanged.Invoke(value); } 
         }
         private Level loadedProject;
         public Level LoadedProject
@@ -96,11 +100,12 @@ namespace GPR5100ToolDevAbgabe.ViewModel
             EditCommand_Undo = new RelayCommand(() => throw new NotImplementedException());
             EditCommand_Redo = new RelayCommand(() => throw new NotImplementedException());
 
+            //neues window / txt mit Programmfunktionen erklärung
             ProgramCommand_Help = new RelayCommand(() => throw new NotImplementedException());
             ProgramCommand_CloseApplication = new RelayCommand(() => Application.Current.Shutdown());
             ProgramCommand_OpenSettingsWindow = new RelayCommand(() => new SettingsWindow().ShowDialog());
 
-            CreateGrid = new RelayCommand(() => new Level(levelName, inputWidth, inputHeight));
+            CreateGrid = new RelayCommand(() => new Level(levelName, inputWidth, inputHeight, null));
         }
         
     }

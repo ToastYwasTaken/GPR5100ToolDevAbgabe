@@ -17,7 +17,7 @@ namespace GPR5100ToolDevAbgabe.ViewModel
         public event PropertyChangedEventHandler PropertyChanged = (s, a) => { };
         public LevelViewModel()
         {
-            level = new Level();
+            level = new Level(null);
         }
 
         public void OpenFile()
@@ -30,7 +30,7 @@ namespace GPR5100ToolDevAbgabe.ViewModel
                 {
                     using (var binaryReader = new BinaryReader(fileStream))
                     {
-                        level = new Level()
+                        level = new Level(null)
                         //own formatting possible
                         {
                             Name = binaryReader.ReadString(),
@@ -84,7 +84,7 @@ namespace GPR5100ToolDevAbgabe.ViewModel
         public void CloseFile()
         {
             currentFile = DEFAULT_FILE;
-            new Level() { Name = "defaultFile", Height = 0, Width = 0};
+            new Level(null) { Name = "defaultFile", Height = 0, Width = 0};
             
         }
     }

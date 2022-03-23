@@ -28,6 +28,9 @@ using System.Windows.Shapes;
 * ChangeLog
 * ----------------------------
 *	16.02.2022  created
+*	
+*	Note:
+*	This entire class is (almost entirely) copied from evening lecture
 ******************************************************************************/
 
 namespace GPR5100ToolDevAbgabe.ViewModel
@@ -46,8 +49,8 @@ namespace GPR5100ToolDevAbgabe.ViewModel
         }
         public RelayCommand(Action _command, Func<bool> _canExecute)
         {
-            this.commmand = _command;
-            this.canExecute = default;
+            commmand = _command;
+            canExecute = default;
         }
 
         public bool CanExecute(object parameter) => canExecute?.Invoke() ?? true;
@@ -66,8 +69,8 @@ namespace GPR5100ToolDevAbgabe.ViewModel
         }
         public RelayCommand(Action<T> _command, Predicate<T> _canExecute)
         {
-            this.command = _command;
-            this.canExecute = _canExecute;
+            command = _command;
+            canExecute = _canExecute;
         }
 
         public bool CanExecute(object parameter)
