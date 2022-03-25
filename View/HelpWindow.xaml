@@ -27,6 +27,39 @@
         mc:Ignorable="d"
         Title="HelpWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="8*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="8*"></ColumnDefinition>
+            <ColumnDefinition Width="8*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="Commands" Grid.Column="1" Grid.Row="1">
+            <TextBlock Text="Commands:" Height="15" Width="100" Margin="0,-340,0,0"></TextBlock>
+            <TextBlock Text="Open File" FontWeight="Bold" Height="15" Width="150" Margin="-150,-290,0,0"></TextBlock>
+            <Image Source="/Resources/icons8-ordner-öffnen-500.png" Width="15" Height="15" Margin="-330,-290,0,0"></Image>
+            <TextBlock Text="Opens a binary file to create a new map" Height="15" Width="220" Margin="120,-290,0,0"></TextBlock>
+            <TextBlock Text="Save File" FontWeight="Bold" Height="15" Width="150" Margin="-150,-250,0,0"></TextBlock>
+            <Image Source="/Resources/icons8-speichern-64.png" Width="15" Height="15" Margin="-330,-250,0,0" ></Image>
+            <TextBlock Text="Saves progress of current project" Height="15" Width="220" Margin="120,-250,0,0"></TextBlock>
+
+            <TextBlock Text="Save File as" FontWeight="Bold" Height="15" Width="150" Margin="-150,-210,0,0"></TextBlock>
+            <Image Source="/Resources/icons8-speichern-als-30.png" Width="15" Height="15" Margin="-330,-210,0,0" ></Image>
+            <TextBlock Text="Saves the file under desired name" Height="15" Width="220" Margin="120,-210,0,0"></TextBlock>
+
+            <TextBlock Text="Close File" FontWeight="Bold" Height="15" Width="150" Margin="-150,-170,0,0"></TextBlock>
+            <Image Source="/Resources/icons8-speichern-als-30.png" Width="15" Height="15" Margin="-330,-170,0,0" ></Image>
+            <TextBlock Text="Closes current project, load default " Height="15" Width="220" Margin="120,-170,0,0"></TextBlock>
+            <TextBlock Text="Quit application" FontWeight="Bold" Height="15" Width="150" Margin="-150,-130,0,0"></TextBlock>
+            <Image Source="/Resources/icons8-ausgang-50.png" Width="15" Height="15" Margin="-330,-130,0,0" ></Image>
+            <TextBlock Text="Closes the entire application" Height="15" Width="220" Margin="120,-130,0,0"></TextBlock>
+        </Grid>       
+        <Grid x:Name="Other" Grid.Column="2" Grid.Row="1">
+            <TextBlock Text=""></TextBlock>
+        </Grid>
     </Grid>
 </Window>

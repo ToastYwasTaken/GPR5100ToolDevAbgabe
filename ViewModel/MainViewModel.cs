@@ -50,7 +50,6 @@ namespace GPR5100ToolDevAbgabe.ViewModel
         //Program specific commands:
         public RelayCommand ProgramCommand_Help { get; }
         public RelayCommand ProgramCommand_CloseApplication { get; }
-        public RelayCommand ProgramCommand_OpenSettingsWindow { get; }
         //Editor specific commands
         public RelayCommand CreateGrid { get; }
 
@@ -101,7 +100,6 @@ namespace GPR5100ToolDevAbgabe.ViewModel
             //TODO: HelpWindow, SettingsWindow
             ProgramCommand_Help = new RelayCommand(() => new HelpWindow().ShowDialog());
             ProgramCommand_CloseApplication = new RelayCommand(() => Application.Current.Shutdown());
-            ProgramCommand_OpenSettingsWindow = new RelayCommand(() => new SettingsWindow().ShowDialog());
 
             //TODO: make Button work
             CreateGrid = new RelayCommand(() => new Level(levelName, inputWidth, inputHeight, null));

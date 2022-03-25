@@ -34,8 +34,13 @@
     <!--Context menu for entire window, unless defined dif lower-->
     <Window.ContextMenu>
         <ContextMenu>
-            <MenuItem>
-
+            <MenuItem Command="{Binding ProgramCommand_Help}"  >
+                <MenuItem.Icon>
+                    <Image Source="/Resources/icons8-help-30.png"></Image>
+                </MenuItem.Icon>
+                <MenuItem.ToolTip>
+                    <TextBlock Text="Help"></TextBlock>
+                </MenuItem.ToolTip>
             </MenuItem>
         </ContextMenu>
     </Window.ContextMenu>
@@ -79,12 +84,6 @@
                 <MenuItem Header="Close" Command="{Binding FileCommand_CloseFile}">
                     <MenuItem.Icon>
                         <Image Source="/Resources/icons8-speichern-als-30.png"></Image>
-                    </MenuItem.Icon>
-                </MenuItem>
-                <Separator></Separator>
-                <MenuItem Header="Settings" Command="{Binding ProgramCommand_OpenSettingsWindow}">
-                    <MenuItem.Icon>
-                        <Image Source="/Resources/icons8-dienstleistungen-500.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator></Separator>
