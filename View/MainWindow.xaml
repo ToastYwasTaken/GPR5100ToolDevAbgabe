@@ -183,17 +183,41 @@
                                 <TextBlock Text="Height: " Height="20" TextAlignment="Center" Margin="10,0,10,-20"></TextBlock>
                             </Grid>
                             <Grid Grid.Column="1" Grid.Row="0">
-                                <TextBox Text="{Binding InputWidth}" TextAlignment="Justify" Height="20" Margin="10,0,10,20"/>
-                                <TextBox Text="{Binding InputHeight}" TextAlignment="Justify" Height="20" Margin="10,0,10,-20"/>
+                                <TextBox Text="{Binding InputWidth, UpdateSourceTrigger=Explicit}"  TextAlignment="Justify" Height="20" Margin="10,0,10,20"/>
+                                <TextBox Text="{Binding InputHeight, UpdateSourceTrigger=Explicit}" TextAlignment="Justify" Height="20" Margin="10,0,10,-20"/>
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Grid Grid.Column="1" Grid.Row="0">
-                        <Button x:Name="CreateGrid" Command="{Binding CreateGrid}" Content="Create Grid"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="25" />
+                </Grid>
+                <Grid x:Name="LevelDetails2" Grid.Column ="2" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Column="2" Grid.Row="0">
+                        <Grid x:Name="LevelNameAndCreateGrid">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Column="0" Grid.Row="0">
+                                <TextBlock Text="Name: " Height="20" TextAlignment="Center" Margin="10,0,10,20"></TextBlock>
+                            </Grid>
+                            <Grid Grid.Column="1" Grid.Row="0">
+                                <TextBox Text="{Binding LevelName, UpdateSourceTrigger=Explicit}"  TextAlignment="Justify" Height="20" Margin="10,0,10,20"/>
+                            </Grid>
+                            <Button x:Name="CreateGrid" Command="{Binding CreateGrid}" Content="Create Grid" Margin="70,23,70,2" Grid.ColumnSpan="2"></Button>
+                        </Grid>
                     </Grid>
                 </Grid>
                 <Grid x:Name="MainEditor" Grid.Column="2" Grid.Row="1">
-                    <UniformGrid x:Name="MainEditorUniformGrid" Columns="{Binding LoadedProject.Height}" Rows="{Binding LoadedProject.Width}">
+                    <UniformGrid x:Name="MainEditorUniformGrid">
 
                     </UniformGrid>
                 </Grid>

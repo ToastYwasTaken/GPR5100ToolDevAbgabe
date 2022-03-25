@@ -8,7 +8,27 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media.Imaging;
-
+/*****************************************************************************
+* Project: GPR5100ToolDevAbgabe
+* File   : Level.cs
+* Date   : 25.03.2022
+* Author : Franz Mörike (FM)
+*
+* These coded instructions, statements, and computer programs contain
+* proprietary information of the author and are protected by Federal
+* copyright law. They may not be disclosed to third parties or copied
+* or duplicated in any form, in whole or in part, without the prior
+* written consent of the author.
+* 
+* Disclaimer: The code bases on lectures from GPR5100ToolDevelopement. 
+* Unless claimed the rights for the code base go to the lecturer.
+*
+* ChangeLog
+* ----------------------------
+*	01.03.2022  created
+*	25.03.2022  updated ctor
+*	
+******************************************************************************/
 namespace GPR5100ToolDevAbgabe.ViewModel
 {
     [Serializable]
@@ -37,10 +57,10 @@ namespace GPR5100ToolDevAbgabe.ViewModel
             { 
                 selectedTileImage = value;
                 selectedElementChanged.Invoke(value);
-                if (gridView.Count > 0) 
-                { 
+                //if (gridView.Count > 0) 
+                //{ 
 
-                } 
+                //} 
             }
         }
 
@@ -63,6 +83,10 @@ namespace GPR5100ToolDevAbgabe.ViewModel
         public Level(string _name, int _width, int _height, UniformGrid _uniformGrid)
         {
             uniformGrid = _uniformGrid;
+            if(_height < 0 || _width < 0)
+            {
+                return;
+            }
             name = _name;
             width = _width;
             height = _height;

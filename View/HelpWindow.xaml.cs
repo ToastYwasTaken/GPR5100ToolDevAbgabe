@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -11,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 /*****************************************************************************
 * Project: GPR5100ToolDevAbgabe
-* File   : SettingsWindow.xaml.cs
+* File   : HelpWindow.xaml.cs
 * Date   : 25.03.2022
 * Author : Franz Mörike (FM)
 *
@@ -28,11 +30,11 @@ using System.Windows.Shapes;
 namespace GPR5100ToolDevAbgabe.View
 {
     /// <summary>
-    /// Interaction logic for SettingsWindow.xaml
+    /// Interaction logic for HelpWindow.xaml
     /// </summary>
-    public partial class SettingsWindow : Window
+    public partial class HelpWindow : Window
     {
-        public SettingsWindow()
+        public HelpWindow()
         {
             InitializeComponent();
         }

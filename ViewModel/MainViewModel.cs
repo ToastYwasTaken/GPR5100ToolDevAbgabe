@@ -32,6 +32,7 @@ using GPR5100ToolDevAbgabe.Model;
 * ChangeLog
 * ----------------------------
 *	16.02.2022  created
+*	22.03.2022  added properties for selectedElementIndex and selectedElementChanged
 ******************************************************************************/
 
 namespace GPR5100ToolDevAbgabe.ViewModel
@@ -63,12 +64,12 @@ namespace GPR5100ToolDevAbgabe.ViewModel
             get => selectedElementIndex;
             set {  RaisePropertyIfChanged(ref selectedElementIndex, value); selectedElementChanged.Invoke(value); } 
         }
-        private Level loadedProject;
-        public Level LoadedProject
-        {
-            get => loadedProject;
-            set => RaisePropertyIfChanged(ref loadedProject, value);
-        }
+        //private Level loadedProject;
+        //public Level LoadedProject
+        //{
+        //    get => loadedProject;
+        //    set => RaisePropertyIfChanged(ref loadedProject, value);
+        //}
         private int inputHeight;
         public int InputHeight
         {
@@ -97,14 +98,12 @@ namespace GPR5100ToolDevAbgabe.ViewModel
             FileCommand_SaveFileAs = new RelayCommand(() => levelViewModel.SaveFileAs());
             FileCommand_CloseFile = new RelayCommand(() => levelViewModel.CloseFile());
 
-            EditCommand_Undo = new RelayCommand(() => throw new NotImplementedException());
-            EditCommand_Redo = new RelayCommand(() => throw new NotImplementedException());
-
-            //neues window / txt mit Programmfunktionen erklärung
-            ProgramCommand_Help = new RelayCommand(() => throw new NotImplementedException());
+            //TODO: HelpWindow, SettingsWindow
+            ProgramCommand_Help = new RelayCommand(() => new HelpWindow().ShowDialog());
             ProgramCommand_CloseApplication = new RelayCommand(() => Application.Current.Shutdown());
             ProgramCommand_OpenSettingsWindow = new RelayCommand(() => new SettingsWindow().ShowDialog());
 
+            //TODO: make Button work
             CreateGrid = new RelayCommand(() => new Level(levelName, inputWidth, inputHeight, null));
         }
         

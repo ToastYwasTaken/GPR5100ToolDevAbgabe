@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\SAE\Tool Dev\GPR5100ToolDevAbgabe\App.xaml
-2-1492275686
+3868774286
 
-19-359501774
+201610860139
 1941905061893
-View\MainWindow.xaml;View\SettingsWindow.xaml;
+View\HelpWindow.xaml;View\MainWindow.xaml;View\SettingsWindow.xaml;
 
 False
 
