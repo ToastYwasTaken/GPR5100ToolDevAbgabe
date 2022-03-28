@@ -34,7 +34,7 @@
     <!--Context menu for entire window, unless defined dif lower-->
     <Window.ContextMenu>
         <ContextMenu>
-            <MenuItem Command="{Binding ProgramCommand_Help}"  >
+            <MenuItem Header="Help" Command="{Binding ProgramCommand_Help}"  >
                 <MenuItem.Icon>
                     <Image Source="/Resources/icons8-help-30.png"></Image>
                 </MenuItem.Icon>
@@ -92,32 +92,6 @@
                         <Image Source="/Resources/icons8-ausgang-50.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
-            </MenuItem>
-            <MenuItem>
-                <MenuItem.Icon>
-                    <Image Source="/Resources/icons8-bearbeiten-500.png"></Image>
-                </MenuItem.Icon>
-                <MenuItem.ToolTip>
-                    <TextBlock Text="Edit"></TextBlock>
-                </MenuItem.ToolTip>
-                <MenuItem Header="Undo" Command="{Binding EditCommand_Undo}"></MenuItem>
-                <MenuItem Header="Redo" Command="{Binding EditCommand_Redo}"></MenuItem>
-            </MenuItem>
-            <MenuItem>
-                <MenuItem.Icon>
-                    <Image Source="/Resources/icons8-view-32.png"></Image>
-                </MenuItem.Icon>
-                <MenuItem.ToolTip>
-                    <TextBlock Text="View"></TextBlock>
-                </MenuItem.ToolTip>
-            </MenuItem>
-            <MenuItem>
-                <MenuItem.Icon>
-                    <Image Source="/Resources/icons8-window-64.png"></Image>
-                </MenuItem.Icon>
-                <MenuItem.ToolTip>
-                    <TextBlock Text="Window"></TextBlock>
-                </MenuItem.ToolTip>
             </MenuItem>
             <MenuItem Command="{Binding ProgramCommand_Help}"  >
                 <MenuItem.Icon>

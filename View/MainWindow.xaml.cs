@@ -63,7 +63,6 @@ namespace GPR5100ToolDevAbgabe.View
             }
             TileSelectionListView.ItemsSource = tileSelectionElements;
             level = new(MainEditorUniformGrid);
-            
         }
 
         public void OnIndexChanged(int _index)
