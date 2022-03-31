@@ -65,7 +65,7 @@
         </Grid>
         <Grid x:Name="Other" Grid.Column="2" Grid.Row="1">
             <TextBlock FontSize="15" FontWeight="Bold" Text="General program description: "></TextBlock>
-            <TextBlock TextBlock.LineHeight="20" Text="The program is a basic level editor. It can use Tiles which can&#x0a;be manually exchanged in the /Tiles directory.&#x0a;The tiles in that directory appear on the left as selectable items.&#x0a;These can be drawn on the Canvas in the centre.&#x0a;Furthermore you can select own sizes for the grid that is drawn&#x0a;and assign it a name. The finished file can be saved as binary&#x0a;file. You can also load this or other binary files again."
+            <TextBlock TextBlock.LineHeight="20" Text="The program is a basic level editor. It can use Tiles which can&#x0a;bemanually exchanged in the /Tiles directory.&#x0a;The tiles in that directory appear on the left as selectable items.&#x0a;These can be drawn on the Canvas in the centre.&#x0a;Furthermore you can select own sizes for the grid that is drawn&#x0a;and assign it a name. The finished file can be saved as binary&#x0a;file. You can also load this or other binary files again."
                        Margin="10,30,10,140"/>
         </Grid>
     </Grid>

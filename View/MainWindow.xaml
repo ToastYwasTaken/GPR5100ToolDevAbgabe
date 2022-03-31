@@ -156,8 +156,8 @@
                                 <TextBlock Text="Height: " Height="20" TextAlignment="Center" Margin="10,0,10,-20"></TextBlock>
                             </Grid>
                             <Grid Grid.Column="1" Grid.Row="0">
-                                <TextBox Text="{Binding InputWidth, UpdateSourceTrigger=Explicit}"  TextAlignment="Justify" Height="20" Margin="10,0,10,20"/>
-                                <TextBox Text="{Binding InputHeight, UpdateSourceTrigger=Explicit}" TextAlignment="Justify" Height="20" Margin="10,0,10,-20"/>
+                                <TextBox Text="{Binding InputWidth, UpdateSourceTrigger=PropertyChanged}"  TextAlignment="Justify" Height="20" Margin="10,0,10,20"/>
+                                <TextBox Text="{Binding InputHeight, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Justify" Height="20" Margin="10,0,10,-20"/>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -183,7 +183,7 @@
                                 <TextBlock Text="Name: " Height="20" TextAlignment="Center" Margin="10,0,10,20"></TextBlock>
                             </Grid>
                             <Grid Grid.Column="1" Grid.Row="0">
-                                <TextBox Text="{Binding LevelName, UpdateSourceTrigger=Explicit}"  TextAlignment="Justify" Height="20" Margin="10,0,10,20"/>
+                                <TextBox Text="{Binding LevelName, UpdateSourceTrigger=PropertyChanged}"  TextAlignment="Justify" Height="20" Margin="10,0,10,20"/>
                             </Grid>
                             <Button x:Name="CreateGrid" Command="{Binding CreateGrid}" Content="Create Grid" Margin="70,23,70,2" Grid.ColumnSpan="2"></Button>
                         </Grid>

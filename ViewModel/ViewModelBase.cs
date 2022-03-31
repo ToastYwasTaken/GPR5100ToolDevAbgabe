@@ -44,7 +44,7 @@ namespace GPR5100ToolDevAbgabe.ViewModel
         protected void RaisePropertyIfChanged<T>(ref T field, in T value, [CallerMemberName] string propertyName = default) => RaisePropertyIfChanged(ref field, value, default, propertyName);
         protected void RaisePropertyIfChanged<T>(ref T field, in T value, Action<T> changed , [CallerMemberName] string propertyName = default)
         {
-            if (!field.Equals(value))
+            if (field != null && field.Equals(value))
             {
                 return;
             }

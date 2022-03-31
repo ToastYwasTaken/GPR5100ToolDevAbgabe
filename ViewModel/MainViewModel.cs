@@ -57,18 +57,21 @@ namespace GPR5100ToolDevAbgabe.ViewModel
 
         public event Action<int> SelectedElementChanged { add => selectedElementChanged += value;  remove => selectedElementChanged -= value;  }
 
+        private event Action<string, int, int> gridChanged;
+
+        public event Action<string, int, int> GridChanged { add => gridChanged += value; remove => gridChanged -= value; }
+
         private int selectedElementIndex;
         public int SelectedElementIndex 
         {
             get => selectedElementIndex;
-            set {  RaisePropertyIfChanged(ref selectedElementIndex, value); selectedElementChanged.Invoke(value); } 
+            set 
+            {  
+                RaisePropertyIfChanged(ref selectedElementIndex, value); 
+                selectedElementChanged.Invoke(value); 
+            } 
         }
-        //private Level loadedProject;
-        //public Level LoadedProject
-        //{
-        //    get => loadedProject;
-        //    set => RaisePropertyIfChanged(ref loadedProject, value);
-        //}
+
         private int inputHeight;
         public int InputHeight
         {
@@ -85,7 +88,10 @@ namespace GPR5100ToolDevAbgabe.ViewModel
         public string LevelName
         {
             get => levelName;
-            set => RaisePropertyIfChanged(ref levelName, value);
+            set 
+            { 
+                if(value != null) RaisePropertyIfChanged(ref levelName, value); 
+            }
         }
 
         public MainViewModel()
@@ -97,13 +103,18 @@ namespace GPR5100ToolDevAbgabe.ViewModel
             FileCommand_SaveFileAs = new RelayCommand(() => levelViewModel.SaveFileAs());
             FileCommand_CloseFile = new RelayCommand(() => levelViewModel.CloseFile());
 
-            //TODO: HelpWindow, SettingsWindow
             ProgramCommand_Help = new RelayCommand(() => new HelpWindow().ShowDialog());
             ProgramCommand_CloseApplication = new RelayCommand(() => Application.Current.Shutdown());
 
-            //TODO: make Button work
-            CreateGrid = new RelayCommand(() => new Level(levelName, inputWidth, inputHeight, null));
+            //TODO: Button should redo the grid, not add new tiles
+            CreateGrid = new RelayCommand(() => gridChanged.Invoke(levelName, inputWidth, inputHeight));
         }
-        
+
+        public void CreateLevel(string _name, int _inputWidth, int _inputHeight)
+        {
+            new Level(_name, _inputWidth, _inputHeight, null);
+            MessageBox.Show($"level name: {LevelName} width: {InputWidth} height: {InputHeight}");
+        }
+
     }
 }

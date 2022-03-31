@@ -35,11 +35,11 @@ namespace GPR5100ToolDevAbgabe.ViewModel
     public class Level
     {        
         private string name;
-        public string Name { get; set; }
+        public string Name { get => name; set => name = value; }
         private int width;
-        public int Width { get; set; }
+        public int Width { get => width; set => width = value; }
         private int height;
-        public int Height { get; set; }
+        public int Height { get => height; set => height = value; }
 
         private event Action<BitmapImage> selectedElementChanged;
 
@@ -96,7 +96,7 @@ namespace GPR5100ToolDevAbgabe.ViewModel
             }
         }
 
-        public void InitGrid()
+        private void InitGrid()
         {
             TileGridViewElement tile = null;
             for (int i = 0; i < width; i++)
