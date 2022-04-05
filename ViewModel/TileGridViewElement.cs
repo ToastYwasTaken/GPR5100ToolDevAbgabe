@@ -39,6 +39,11 @@ namespace GPR5100ToolDevAbgabe.ViewModel
         public Button Button { get => button; set => button = value; }
 
         private BitmapImage selectedImage;
+        public BitmapImage SelectedImage
+        {
+            get => selectedImage;
+            set => selectedImage = value;
+        }
 
         public TileGridViewElement()
         {

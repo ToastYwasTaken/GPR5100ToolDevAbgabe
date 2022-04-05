@@ -41,6 +41,14 @@ namespace GPR5100ToolDevAbgabe.ViewModel
         private int height;
         public int Height { get => height; set => height = value; }
 
+        private List<TileGridViewElement> gridView = new List<TileGridViewElement>();
+
+        public List<TileGridViewElement> GridView
+        {
+            get => gridView;
+            set => gridView = value;
+        }
+
         private event Action<BitmapImage> selectedElementChanged;
 
         public event Action<BitmapImage> SelectedElementChanged
@@ -57,14 +65,8 @@ namespace GPR5100ToolDevAbgabe.ViewModel
             { 
                 selectedTileImage = value;
                 selectedElementChanged.Invoke(value);
-                //if (gridView.Count > 0) 
-                //{ 
-
-                //} 
             }
         }
-
-        private List<TileGridViewElement> gridView = new List<TileGridViewElement>();
 
         private UniformGrid uniformGrid;
 
@@ -113,7 +115,6 @@ namespace GPR5100ToolDevAbgabe.ViewModel
                 }
             }
         }
-
 
 
     }

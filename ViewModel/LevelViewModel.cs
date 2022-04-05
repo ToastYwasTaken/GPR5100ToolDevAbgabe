@@ -53,11 +53,11 @@ namespace GPR5100ToolDevAbgabe.ViewModel
                     using (var binaryReader = new BinaryReader(fileStream))
                     {
                         level = new Level(null)
-                        //own formatting possible
                         {
                             Name = binaryReader.ReadString(),
                             Width = binaryReader.ReadInt32(),
-                            Height = binaryReader.ReadInt32()
+                            Height = binaryReader.ReadInt32(),
+                            GridView = ConvertStringToGridViewElementsList(binaryReader.ReadString())
                         };
                         PropertyChanged.Invoke(this, new PropertyChangedEventArgs(null));
                     }
@@ -72,18 +72,45 @@ namespace GPR5100ToolDevAbgabe.ViewModel
         public void SaveFile()
         {
             currentFile = currentFile == null ? DEFAULT_FILE : currentFile;
+            string gridElementsAsString = ConvertGridElementsToString();
                 using (var fileStream = new FileStream(currentFile, FileMode.Create))
                 {
                     using (var binaryWriter = new BinaryWriter(fileStream))
                     {
-                        //own formatting possible
                         binaryWriter.Write(level.Name);
                         binaryWriter.Write(level.Width);
                         binaryWriter.Write(level.Height);
+                        binaryWriter.Write(gridElementsAsString);
                     }
                 }
 
         }
+
+        private string ConvertGridElementsToString()
+        {
+            string str = "";
+            string individualSeperator = ",";   //seperates posX, posY and Image
+            string tileGridViewElementSeperator = "/";  //seperates to next element
+            for (int i = 0; i < level.GridView.Count; i++)
+            {
+                string posXstr = level.GridView[i].PosX.ToString();
+                string posYstr = level.GridView[i].PosY.ToString();
+                string selectedImageStr = level.GridView[i].SelectedImage.ToString();
+                str.Concat(posXstr).Concat(individualSeperator).Concat(posYstr).Concat(individualSeperator).Concat(selectedImageStr).Concat(tileGridViewElementSeperator);
+            }
+            return str;
+        }
+
+        private List<TileGridViewElement> ConvertStringToGridViewElementsList(string _stringToConvert)
+        {
+            string[] tileGridViewElements = _stringToConvert.Split("/");
+
+            for (int i = 0; i < length; i++)
+            {
+
+            }
+        }
+
         public void SaveFileAs()
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -95,7 +122,6 @@ namespace GPR5100ToolDevAbgabe.ViewModel
                     currentFile = saveFileDialog.FileName;
                     using (var binaryWriter = new BinaryWriter(fileStream))
                     {
-                        //own formatting possible
                         binaryWriter.Write(level.Name);
                         binaryWriter.Write(level.Width);
                         binaryWriter.Write(level.Height);
@@ -107,7 +133,6 @@ namespace GPR5100ToolDevAbgabe.ViewModel
         {
             currentFile = DEFAULT_FILE;
             new Level(null) { Name = "defaultFile", Height = 0, Width = 0};
-            
         }
 
 
