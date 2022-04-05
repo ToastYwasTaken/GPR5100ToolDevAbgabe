@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
+using GPR5100ToolDevAbgabe.Model;
 using Microsoft.Win32;
 /*****************************************************************************
 * Project: GPR5100ToolDevAbgabe
@@ -33,33 +35,32 @@ namespace GPR5100ToolDevAbgabe.ViewModel
 {
     public class LevelViewModel :INotifyPropertyChanged
     {
-        private Level level;
         private readonly string DEFAULT_FILE = "defaultSaveFile.bin";
         private string currentFile;
         public event PropertyChangedEventHandler PropertyChanged = (s, a) => { };
         public LevelViewModel()
         {
-            level = new Level(null);
+
         }
 
         public void OpenFile()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Binary files (*.bin)|*.bin";
             if (openFileDialog.ShowDialog() == true)
             {
-                openFileDialog.Filter = "Binary files (*.bin)|*.bin";
                 using (var fileStream = new FileStream(openFileDialog.FileName, FileMode.Open))
                 {
                     using (var binaryReader = new BinaryReader(fileStream))
                     {
-                        level = new Level(null)
+                        Level level = new Level(null)
                         {
                             Name = binaryReader.ReadString(),
                             Width = binaryReader.ReadInt32(),
                             Height = binaryReader.ReadInt32(),
-                            GridView = ConvertStringToGridViewElementsList(binaryReader.ReadString())
+                            GridView = BitmapConverter.ConvertStringToGridViewElementsList(binaryReader.ReadString())
                         };
-                        PropertyChanged.Invoke(this, new PropertyChangedEventArgs(null));
+                        //PropertyChanged.Invoke(this, new PropertyChangedEventArgs(null));
                     }
                 }
             }
@@ -69,66 +70,41 @@ namespace GPR5100ToolDevAbgabe.ViewModel
         {
             throw new NotImplementedException();
         }
-        public void SaveFile()
+        public void SaveFile(Level _currentLevel)
         {
             currentFile = currentFile == null ? DEFAULT_FILE : currentFile;
-            string gridElementsAsString = ConvertGridElementsToString();
                 using (var fileStream = new FileStream(currentFile, FileMode.Create))
                 {
                     using (var binaryWriter = new BinaryWriter(fileStream))
                     {
-                        binaryWriter.Write(level.Name);
-                        binaryWriter.Write(level.Width);
-                        binaryWriter.Write(level.Height);
-                        binaryWriter.Write(gridElementsAsString);
+                        binaryWriter.Write(_currentLevel.Name);
+                        binaryWriter.Write(_currentLevel.Width);
+                        binaryWriter.Write(_currentLevel.Height);
+                        binaryWriter.Write(BitmapConverter.ConvertGridElementsToString(_currentLevel.GridView));
                     }
                 }
-
         }
 
-        private string ConvertGridElementsToString()
-        {
-            string str = "";
-            string individualSeperator = ",";   //seperates posX, posY and Image
-            string tileGridViewElementSeperator = "/";  //seperates to next element
-            for (int i = 0; i < level.GridView.Count; i++)
-            {
-                string posXstr = level.GridView[i].PosX.ToString();
-                string posYstr = level.GridView[i].PosY.ToString();
-                string selectedImageStr = level.GridView[i].SelectedImage.ToString();
-                str.Concat(posXstr).Concat(individualSeperator).Concat(posYstr).Concat(individualSeperator).Concat(selectedImageStr).Concat(tileGridViewElementSeperator);
-            }
-            return str;
-        }
-
-        private List<TileGridViewElement> ConvertStringToGridViewElementsList(string _stringToConvert)
-        {
-            string[] tileGridViewElements = _stringToConvert.Split("/");
-
-            for (int i = 0; i < length; i++)
-            {
-
-            }
-        }
-
-        public void SaveFileAs()
+        public void SaveFileAs(Level _currentLevel)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Binary files (*.bin)|*.bin";
             if (saveFileDialog.ShowDialog() == true)
             {
-                saveFileDialog.Filter = "Binary files (*.bin)|*.bin";
-                using (var fileStream = new FileStream(saveFileDialog.FileName, FileMode.CreateNew))
+                using (var fileStream = new FileStream(saveFileDialog.FileName, FileMode.Create))
                 {
                     currentFile = saveFileDialog.FileName;
                     using (var binaryWriter = new BinaryWriter(fileStream))
                     {
-                        binaryWriter.Write(level.Name);
-                        binaryWriter.Write(level.Width);
-                        binaryWriter.Write(level.Height);
+                        binaryWriter.Write(_currentLevel.Name);
+                        binaryWriter.Write(_currentLevel.Width);
+                        binaryWriter.Write(_currentLevel.Height);
+                        binaryWriter.Write(BitmapConverter.ConvertGridElementsToString(_currentLevel.GridView));
                     }
                 }
             }
         }
+
         public void CloseFile()
         {
             currentFile = DEFAULT_FILE;

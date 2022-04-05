@@ -99,8 +99,8 @@ namespace GPR5100ToolDevAbgabe.ViewModel
             LevelViewModel levelViewModel = new LevelViewModel();
             FileCommand_NewFile = new RelayCommand(() => levelViewModel.NewFile());
             FileCommand_OpenFile = new RelayCommand(() => levelViewModel.OpenFile());
-            FileCommand_SaveFile = new RelayCommand(() => levelViewModel.SaveFile());
-            FileCommand_SaveFileAs = new RelayCommand(() => levelViewModel.SaveFileAs());
+            FileCommand_SaveFile = new RelayCommand(() => levelViewModel.SaveFile(null));
+            FileCommand_SaveFileAs = new RelayCommand(() => levelViewModel.SaveFileAs(null));
             FileCommand_CloseFile = new RelayCommand(() => levelViewModel.CloseFile());
 
             ProgramCommand_Help = new RelayCommand(() => new HelpWindow().ShowDialog());

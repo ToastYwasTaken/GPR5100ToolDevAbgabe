@@ -31,6 +31,5 @@ namespace GPR5100ToolDevAbgabe.ViewModel
 
         public SettingsViewModel VMSettings => new();
 
-        public ConverterModel converterModel => new();
     }
 }
