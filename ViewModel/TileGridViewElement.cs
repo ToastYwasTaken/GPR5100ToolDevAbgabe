@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +29,7 @@ using System.Windows.Media.Imaging;
 ******************************************************************************/
 namespace GPR5100ToolDevAbgabe.ViewModel
 {
+    [Serializable]
     public class TileGridViewElement : Tile
     {
         private int posX;
@@ -38,6 +40,21 @@ namespace GPR5100ToolDevAbgabe.ViewModel
         private Button button;
         public Button Button { get => button; set => button = value; }
 
+        private int height = 30;
+
+        public int Height
+        {
+            get { return height; }
+            set { height = value; }
+        }       
+        private int width = 30;
+
+        public int Width
+        {
+            get { return width; }
+            set { width = value; }
+        }
+        
         private BitmapImage selectedImage;
         public BitmapImage SelectedImage
         {
@@ -48,7 +65,12 @@ namespace GPR5100ToolDevAbgabe.ViewModel
         public TileGridViewElement()
         {
             button = new Button();
+            button.Width = width;
+            button.Height = height;
             button.Click += OnGridClick;
+            button.HorizontalAlignment = HorizontalAlignment.Center;
+            button.VerticalAlignment = VerticalAlignment.Center;
+            //button.Margin = ;
         }
 
         public void OnGridClick(object sender, RoutedEventArgs args)

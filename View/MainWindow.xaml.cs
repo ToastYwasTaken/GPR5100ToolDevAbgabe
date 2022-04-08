@@ -45,7 +45,18 @@ namespace GPR5100ToolDevAbgabe.View
     public partial class MainWindow : Window
     {
         MainViewModel mvm = null;
-        Level level = null;
+
+        //private Level level = null;
+
+        public Level Level
+        {
+            get { return mvm.CurrentLevel; }
+            set 
+            {
+                mvm.CurrentLevel = value;
+            }
+        }
+
         ObservableCollection<TileSelectionElement> tileSelectionElements = null;
 
         public MainWindow()
@@ -54,7 +65,6 @@ namespace GPR5100ToolDevAbgabe.View
             mvm = new MainViewModel();
             DataContext = mvm;
             mvm.SelectedElementChanged += OnIndexChanged;
-            mvm.GridChanged += OnGridChanged;
             //Adding Tiles from current directory into the application
             string[] files = Directory.GetFiles(System.IO.Path.Combine(Environment.CurrentDirectory, "Tiles"), "*.png", SearchOption.TopDirectoryOnly);
             int tileAmount = files.Length;
@@ -64,20 +74,31 @@ namespace GPR5100ToolDevAbgabe.View
                 tileSelectionElements.Add(new TileSelectionElement(files[i]));
             }
             TileSelectionListView.ItemsSource = tileSelectionElements;
-            level = new(MainEditorUniformGrid);
+            Level = new(MainEditorUniformGrid); //erstmaliges Erstellen des Grids
+            mvm.GridChanged += OnGridChanged;   //Beim drücken von CreateGrid()
         }
 
+        /// <summary>
+        /// Triggers when clicking a tile in the uniform grid
+        /// </summary>
+        /// <param name="_index"></param>
         public void OnIndexChanged(int _index)
         {
-            if(level != null && tileSelectionElements != null)
+            if(Level != null && tileSelectionElements != null)
             {
-                level.SelectedTileImage = tileSelectionElements[_index].BImage;
+                Level.SelectedTileImage = tileSelectionElements[_index].BImage;
             }
         }
         
+        /// <summary>
+        /// Triggers when clicking "create new Level"
+        /// </summary>
+        /// <param name="_levelName"></param>
+        /// <param name="_levelWidth"></param>
+        /// <param name="_levelHeight"></param>
         public void OnGridChanged(string _levelName, int _levelWidth, int _levelHeight)
         {
-            level = new Level(_levelName, _levelWidth, _levelHeight, MainEditorUniformGrid);
+            Level = new Level(_levelName, _levelWidth, _levelHeight, MainEditorUniformGrid);
         }
 
     }

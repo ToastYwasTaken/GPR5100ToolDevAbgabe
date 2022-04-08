@@ -33,6 +33,7 @@ using GPR5100ToolDevAbgabe.Model;
 * ----------------------------
 *	16.02.2022  created
 *	22.03.2022  added properties for selectedElementIndex and selectedElementChanged
+*	06.04.2022  fixed level generation / file saving
 ******************************************************************************/
 
 namespace GPR5100ToolDevAbgabe.ViewModel
@@ -61,6 +62,20 @@ namespace GPR5100ToolDevAbgabe.ViewModel
 
         public event Action<string, int, int> GridChanged { add => gridChanged += value; remove => gridChanged -= value; }
 
+        private Level currentLevel;
+
+        private const int defaultHeightValue = 10;
+        private const int defaultWidthValue = 10;
+        private const string defaultLevelName = "defaultLevel";
+
+        public Level CurrentLevel
+        {
+            get => currentLevel;
+            set => currentLevel = value;
+        }
+
+        public LevelData levelData;
+
         private int selectedElementIndex;
         public int SelectedElementIndex 
         {
@@ -72,25 +87,43 @@ namespace GPR5100ToolDevAbgabe.ViewModel
             } 
         }
 
-        private int inputHeight;
+        private int inputHeight = defaultHeightValue;
         public int InputHeight
         {
             get => inputHeight;
-            set => RaisePropertyIfChanged(ref inputHeight, value);
+            set 
+            {
+               if (value == 0)
+                {
+                    value = defaultHeightValue;
+                }
+                RaisePropertyIfChanged(ref inputHeight, value);
+            }
         }
-        private int inputWidth;
+        private int inputWidth = defaultWidthValue;
         public int InputWidth
         {
             get => inputWidth;
-            set => RaisePropertyIfChanged(ref inputWidth, value);
+            set 
+            {
+               if (value == 0)
+                {
+                    value = defaultWidthValue;
+                }
+                RaisePropertyIfChanged(ref inputWidth, value);
+            }
         }
-        private string levelName;
+        private string inputName = defaultLevelName;
         public string LevelName
         {
-            get => levelName;
+            get => inputName;
             set 
             { 
-                if(value != null) RaisePropertyIfChanged(ref levelName, value); 
+                if(value == null)
+                {
+                    value = defaultLevelName;
+                }
+                RaisePropertyIfChanged(ref inputName, value); 
             }
         }
 
@@ -98,23 +131,45 @@ namespace GPR5100ToolDevAbgabe.ViewModel
         {
             LevelViewModel levelViewModel = new LevelViewModel();
             FileCommand_NewFile = new RelayCommand(() => levelViewModel.NewFile());
-            FileCommand_OpenFile = new RelayCommand(() => levelViewModel.OpenFile());
-            FileCommand_SaveFile = new RelayCommand(() => levelViewModel.SaveFile(null));
-            FileCommand_SaveFileAs = new RelayCommand(() => levelViewModel.SaveFileAs(null));
+            FileCommand_OpenFile = new RelayCommand(() =>
+                {
+                    levelData = levelViewModel.OpenFile();
+                });
+            FileCommand_SaveFile = new RelayCommand(() =>
+                {
+                    levelData = new();
+                    levelData.Name = inputName;
+                    levelData.Width = inputWidth;
+                    levelData.Height = inputHeight;
+                    levelData.Elements = new TileGridViewElement[inputWidth, inputHeight];
+                    levelViewModel.SaveFile(levelData);
+                });
+            FileCommand_SaveFileAs = new RelayCommand(() => 
+                {
+                    levelData = new();
+                    levelData.Name = inputName;
+                    levelData.Width = inputWidth;
+                    levelData.Height = inputHeight;
+                    levelData.Elements = new TileGridViewElement[inputWidth, inputHeight];
+                    levelViewModel.SaveFileAs(levelData);
+            }); 
             FileCommand_CloseFile = new RelayCommand(() => levelViewModel.CloseFile());
 
             ProgramCommand_Help = new RelayCommand(() => new HelpWindow().ShowDialog());
             ProgramCommand_CloseApplication = new RelayCommand(() => Application.Current.Shutdown());
 
-            //TODO: Button should redo the grid, not add new tiles
-            CreateGrid = new RelayCommand(() => gridChanged.Invoke(levelName, inputWidth, inputHeight));
+            CreateGrid = new RelayCommand(() =>
+            {
+                gridChanged.Invoke(inputName, inputWidth, inputHeight);
+                MessageBox.Show($"Created new Level-Grid \nname: {LevelName} width: {InputWidth} height: {InputHeight}");
+            });
         }
 
-        public void CreateLevel(string _name, int _inputWidth, int _inputHeight)
-        {
-            new Level(_name, _inputWidth, _inputHeight, null);
-            MessageBox.Show($"level name: {LevelName} width: {InputWidth} height: {InputHeight}");
-        }
+        //public void CreateLevel(string _name, int _inputWidth, int _inputHeight)
+        //{
+        //    currentLevel = new Level(_name, _inputWidth, _inputHeight, null);
+        //    MessageBox.Show($"Created new Level-Grid \n name: {LevelName} width: {InputWidth} height: {InputHeight}");
+        //}
 
     }
 }

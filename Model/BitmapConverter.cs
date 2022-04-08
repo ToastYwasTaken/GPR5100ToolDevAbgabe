@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Windows.Media.Imaging;
+using static GPR5100ToolDevAbgabe.ViewModel.LevelViewModel;
 /*****************************************************************************
 * Project: GPR5100ToolDevAbgabe
 * File   : BitmapConverter.cs
@@ -28,50 +29,34 @@ namespace GPR5100ToolDevAbgabe.Model
 {
     public static class BitmapConverter
     {
-        public static string ConvertGridElementsToString(this List<TileGridViewElement> _gridViewElementsList)
+        private static BitmapImage bitmapImage = new();
+        private static byte[] bitmapImageAsByteArr = null;
+
+        public static byte[] ConvertBitmapImageToByte(this BitmapImage _bitmapImage)
         {
-            string str = "";
-            string individualSeperator = ",";   //seperates posX, posY and Image
-            string tileGridViewElementSeperator = "/";  //seperates to next element
-            for (int i = 0; i < _gridViewElementsList.Count; i++)
+            BitmapEncoder encoder = new PngBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(_bitmapImage));
+            using (MemoryStream memoryStream = new MemoryStream())
             {
-                string posXstr = _gridViewElementsList[i].PosX.ToString();
-                string posYstr = _gridViewElementsList[i].PosY.ToString();
-                string selectedImageStr = _gridViewElementsList[i].SelectedImage.ToString();
-                str += posXstr + individualSeperator + posYstr + individualSeperator + selectedImageStr + tileGridViewElementSeperator;
+                encoder.Save(memoryStream);
+                bitmapImageAsByteArr = memoryStream.ToArray();
             }
-            return str;
+            return bitmapImageAsByteArr;
         }
 
-        public static List<TileGridViewElement> ConvertStringToGridViewElementsList(this string _stringToConvert)
+        public static BitmapImage ConvertByteArrToBitmapImage(this byte[] _byteArr)
         {
-            string[] tileGridViewElements = _stringToConvert.Split("/");
-            List<TileGridViewElement> tileGridViewElementsList = new();
-            for (int i = 0; i < tileGridViewElements.Length; i++)
+            using (MemoryStream memoryStream = new MemoryStream(_byteArr))
             {
-                string[] elementData = tileGridViewElements[i].Split(",");
-                TileGridViewElement tileGridViewElement = new();
-                tileGridViewElement.PosX = int.Parse(elementData[0]);  //posX
-                tileGridViewElement.PosY = int.Parse(elementData[1]);  //posY
-                tileGridViewElement.SelectedImage = ConvertStringToBitmapImage(elementData[2]);  //BitmapImage
-                tileGridViewElementsList.Add(tileGridViewElement);
+                bitmapImage.BeginInit();
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapImage.StreamSource = memoryStream;
+                bitmapImage.EndInit();
+                return bitmapImage;
             }
-            return tileGridViewElementsList;
         }
 
-        public static BitmapImage ConvertStringToBitmapImage(string _imageString)
-        {
-            byte[] bytes = Convert.FromBase64String(_imageString);
-            using MemoryStream memoryStream = new(bytes);
-            BitmapImage bitmapImage = new();
 
-            bitmapImage.BeginInit();
-            bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-            bitmapImage.StreamSource = memoryStream;
-            bitmapImage.EndInit();
-
-            return bitmapImage;
-        }
     }
 
 }

@@ -27,13 +27,14 @@ using System.Windows.Media.Imaging;
 * ----------------------------
 *	01.03.2022  created
 *	25.03.2022  updated ctor
+*	06.04.2022  changed GridView structure to array
 *	
 ******************************************************************************/
 namespace GPR5100ToolDevAbgabe.ViewModel
 {
     [Serializable]
     public class Level
-    {        
+    {
         private string name;
         public string Name { get => name; set => name = value; }
         private int width;
@@ -41,9 +42,9 @@ namespace GPR5100ToolDevAbgabe.ViewModel
         private int height;
         public int Height { get => height; set => height = value; }
 
-        private List<TileGridViewElement> gridView = new List<TileGridViewElement>();
+        private TileGridViewElement[,] gridView = null;
 
-        public List<TileGridViewElement> GridView
+        public TileGridViewElement[,] GridView
         {
             get => gridView;
             set => gridView = value;
@@ -60,9 +61,9 @@ namespace GPR5100ToolDevAbgabe.ViewModel
         private BitmapImage selectedTileImage;
         public BitmapImage SelectedTileImage
         {
-            get => selectedTileImage; 
-            set 
-            { 
+            get => selectedTileImage;
+            set
+            {
                 selectedTileImage = value;
                 selectedElementChanged.Invoke(value);
             }
@@ -78,6 +79,8 @@ namespace GPR5100ToolDevAbgabe.ViewModel
             height = 10;
             if(uniformGrid != null)
             {
+                uniformGrid.Children.Clear();
+                gridView = null;
                 InitGrid();
             }
         }
@@ -85,7 +88,7 @@ namespace GPR5100ToolDevAbgabe.ViewModel
         public Level(string _name, int _width, int _height, UniformGrid _uniformGrid)
         {
             uniformGrid = _uniformGrid;
-            if(_height < 0 || _width < 0)
+            if (_height < 0 || _width < 0)
             {
                 return;
             }
@@ -94,13 +97,19 @@ namespace GPR5100ToolDevAbgabe.ViewModel
             height = _height;
             if (uniformGrid != null)
             {
+                uniformGrid.Children.Clear();
+                //gridView = null;
                 InitGrid();
             }
         }
 
         private void InitGrid()
         {
+            gridView = new TileGridViewElement[width, height];
             TileGridViewElement tile = null;
+            uniformGrid.Rows = height;
+            uniformGrid.Columns = width;
+            //Assigning all tiles accordingly
             for (int i = 0; i < width; i++)
             {
                 for (int j = 0; j < height; j++)
@@ -109,13 +118,18 @@ namespace GPR5100ToolDevAbgabe.ViewModel
                     tile.PosX = i;
                     tile.PosY = j;
                     tile.BImage = null;
+                    tile.Button.HorizontalAlignment = HorizontalAlignment.Stretch;
+                    tile.Button.VerticalAlignment = VerticalAlignment.Stretch;
                     SelectedElementChanged += tile.OnPassImage;
                     uniformGrid.Children.Add(tile.Button);
-                    gridView.Add(tile);
+                    gridView[i, j] = tile;
                 }
             }
-        }
+            //Resize Grid
+            uniformGrid.MaxWidth = tile.Width * Width;
+            uniformGrid.MaxHeight = tile.Height * Height;
 
+        }
 
     }
 

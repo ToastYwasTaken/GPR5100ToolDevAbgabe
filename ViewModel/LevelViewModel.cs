@@ -7,9 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media.Imaging;
 using GPR5100ToolDevAbgabe.Model;
 using Microsoft.Win32;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
 /*****************************************************************************
 * Project: GPR5100ToolDevAbgabe
 * File   : LevelViewModel.cs
@@ -33,17 +36,18 @@ using Microsoft.Win32;
 //Save all tiles
 namespace GPR5100ToolDevAbgabe.ViewModel
 {
-    public class LevelViewModel :INotifyPropertyChanged
+    public class LevelViewModel : INotifyPropertyChanged
     {
         private readonly string DEFAULT_FILE = "defaultSaveFile.bin";
         private string currentFile;
         public event PropertyChangedEventHandler PropertyChanged = (s, a) => { };
+
         public LevelViewModel()
         {
 
         }
 
-        public void OpenFile()
+        public LevelData OpenFile()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Binary files (*.bin)|*.bin";
@@ -51,66 +55,114 @@ namespace GPR5100ToolDevAbgabe.ViewModel
             {
                 using (var fileStream = new FileStream(openFileDialog.FileName, FileMode.Open))
                 {
-                    using (var binaryReader = new BinaryReader(fileStream))
+                    try
                     {
-                        Level level = new Level(null)
-                        {
-                            Name = binaryReader.ReadString(),
-                            Width = binaryReader.ReadInt32(),
-                            Height = binaryReader.ReadInt32(),
-                            GridView = BitmapConverter.ConvertStringToGridViewElementsList(binaryReader.ReadString())
-                        };
-                        //PropertyChanged.Invoke(this, new PropertyChangedEventArgs(null));
+                        currentFile = openFileDialog.FileName;
+                        BinaryFormatter binaryFormatter = new();
+                        return binaryFormatter.Deserialize(fileStream) as LevelData;
+                    }
+                    catch (Exception e)
+                    {
+                        throw new SerializationException(e.ToString());
                     }
                 }
             }
+            return null;
         }
         //TODO
         public void NewFile()
         {
             throw new NotImplementedException();
         }
-        public void SaveFile(Level _currentLevel)
+        public void SaveFile(LevelData _currentLevelData)
         {
+            if (_currentLevelData == null)
+            {
+                return;
+            }
             currentFile = currentFile == null ? DEFAULT_FILE : currentFile;
+            try
+            {
                 using (var fileStream = new FileStream(currentFile, FileMode.Create))
                 {
-                    using (var binaryWriter = new BinaryWriter(fileStream))
-                    {
-                        binaryWriter.Write(_currentLevel.Name);
-                        binaryWriter.Write(_currentLevel.Width);
-                        binaryWriter.Write(_currentLevel.Height);
-                        binaryWriter.Write(BitmapConverter.ConvertGridElementsToString(_currentLevel.GridView));
-                    }
+                    BinaryFormatter binaryFormatter = new();
+                    binaryFormatter.Serialize(fileStream, _currentLevelData);
                 }
+            }
+            catch (Exception e)
+            {
+                throw new SerializationException(e.ToString());
+            }
         }
 
-        public void SaveFileAs(Level _currentLevel)
+        public void SaveFileAs(LevelData _currentLevelData)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            if (_currentLevelData == null)
+            {
+                return;
+            }
+            SaveFileDialog saveFileDialog = new();
             saveFileDialog.Filter = "Binary files (*.bin)|*.bin";
             if (saveFileDialog.ShowDialog() == true)
             {
-                using (var fileStream = new FileStream(saveFileDialog.FileName, FileMode.Create))
+                try
                 {
-                    currentFile = saveFileDialog.FileName;
-                    using (var binaryWriter = new BinaryWriter(fileStream))
+                    using (var fileStream = new FileStream(saveFileDialog.FileName, FileMode.Create))
                     {
-                        binaryWriter.Write(_currentLevel.Name);
-                        binaryWriter.Write(_currentLevel.Width);
-                        binaryWriter.Write(_currentLevel.Height);
-                        binaryWriter.Write(BitmapConverter.ConvertGridElementsToString(_currentLevel.GridView));
+                        currentFile = saveFileDialog.FileName;
+                        BinaryFormatter binaryFormatter = new();
+                        binaryFormatter.Serialize(fileStream, _currentLevelData);
                     }
                 }
+                catch (Exception e)
+                {
+                    throw new SerializationException(e.ToString());
+                }
+
             }
         }
 
         public void CloseFile()
         {
             currentFile = DEFAULT_FILE;
-            new Level(null) { Name = "defaultFile", Height = 0, Width = 0};
+            //new Level(null) { Name = "defaultFile", Height = 0, Width = 0 };
         }
 
 
     }
+
+    [Serializable]
+    public class LevelData
+    {
+        private string name;
+
+        public string Name
+        {
+            get => name;
+            set => name = value;
+        }
+
+        private int height;
+        public int Height
+        {
+            get => height;
+            set => height = value;
+        }       
+        private int width;
+        public int Width
+        {
+            get => width;
+            set => width = value;
+        }
+
+        private TileGridViewElement[,] elements;
+
+        public TileGridViewElement [,] Elements
+        {
+            get => elements;
+            set => elements = value;
+        }
+
+    }
+
 }

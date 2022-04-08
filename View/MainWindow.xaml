@@ -112,7 +112,7 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="1.5*"></RowDefinition>
                     <RowDefinition Height="7*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
@@ -185,13 +185,12 @@
                             <Grid Grid.Column="1" Grid.Row="0">
                                 <TextBox Text="{Binding LevelName, UpdateSourceTrigger=PropertyChanged}"  TextAlignment="Justify" Height="20" Margin="10,0,10,20"/>
                             </Grid>
-                            <Button x:Name="CreateGrid" Command="{Binding CreateGrid}" Content="Create Grid" Margin="70,23,70,2" Grid.ColumnSpan="2"></Button>
+                            <Button x:Name="CreateGrid" Command="{Binding CreateGrid}" Content="Create new Grid" Height="26" Width="140" Margin="70,35,70,0" Grid.ColumnSpan="2"></Button>
                         </Grid>
                     </Grid>
                 </Grid>
                 <Grid x:Name="MainEditor" Grid.Column="2" Grid.Row="1">
                     <UniformGrid x:Name="MainEditorUniformGrid">
-
                     </UniformGrid>
                 </Grid>
                 <Grid x:Name="ErrorShowBox" Grid.Column="2" Grid.Row="3"></Grid>
